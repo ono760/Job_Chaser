@@ -8,14 +8,14 @@ exports.up = function(knex, Promise) {
           table.string('last_name');
           table.string('email');
           table.string('password');
-          table.integer('phone_number');
+          table.biginteger('phone_number',20);
       }),
 
       knex.schema.createTable('companies',function (table) {
           table.increments('id').primary();
           table.string('name');
           table.string('location');
-          table.string('size');
+          table.biginteger('size');
           table.string('website');
           
       })]).then(function() {
@@ -24,15 +24,15 @@ exports.up = function(knex, Promise) {
             table.increments('id').primary();
             table.string('position');
             table.string('link_to_application');
-            table.string('salary');
-            table.integer('company_id',20).references('id').inTable('companies');
+            table.biginteger('salary');
+            table.biginteger('company_id',20).references('id').inTable('companies');
         });
       }).then(function(){
       
         return knex.schema.createTable('user_jobs',function (table) {
             table.increments('id').primary();
-            table.integer('user_id',20).references('id').inTable('users');
-            table.integer('job_id',20).references('id').inTable('jobs');
+            table.biginteger('user_id',20).references('id').inTable('users');
+            table.biginteger('job_id',20).references('id').inTable('jobs');
             table.string('status');
             table.string('notes');
         })
@@ -40,8 +40,8 @@ exports.up = function(knex, Promise) {
       
         return knex.schema.createTable('user_job_stages',function (table) {
             table.increments('id').primary();
-            table.integer('user_id',20).references('id').inTable('users');
-            table.integer('user_job_id',20).references('id').inTable('user_jobs');
+            table.biginteger('user_id',20).references('id').inTable('users');
+            table.biginteger('user_job_id',20).references('id').inTable('user_jobs');
             table.string('stage');
             table.string('notes');
         })
@@ -49,16 +49,16 @@ exports.up = function(knex, Promise) {
       
         return knex.schema.createTable('interview_questions',function (table) {
             table.increments('id').primary();
-            table.integer('user_id',20).references('id').inTable('users');
-            table.integer('user_job_id',20).references('id').inTable('user_jobs');
-            table.integer('user_stage',20).references('id').inTable('user_job_stages');
+            table.biginteger('user_id',20).references('id').inTable('users');
+            table.biginteger('user_job_id',20).references('id').inTable('user_jobs');
+            table.biginteger('user_stage',20).references('id').inTable('user_job_stages');
             table.string('question');
         })
       }).then(function () {
       
         return knex.schema.createTable('reviews',function (table) {
             table.increments('id').primary();
-            table.integer('company_id',20).references('id').inTable('companies');
+            table.biginteger('company_id',20).references('id').inTable('companies');
             table.string('review_text');
         })
       })
