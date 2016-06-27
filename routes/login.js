@@ -1,9 +1,12 @@
+/**
+ * Created by Nikhil on 6/27/16.
+ */
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Job Search' });
+    res.send('respond with a resource');
 });
 
 module.exports = router;

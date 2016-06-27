@@ -9,6 +9,11 @@ module.exports = {
     
   },
   
+  staging:{
+    client:'pg',
+    connection: 'postgres://localhost:5432/q2project'
+  },
+  
   production: {
     client: 'pg',
     connection: {
