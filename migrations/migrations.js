@@ -4,10 +4,10 @@ exports.up = function(knex, Promise) {
 
       knex.schema.createTable('users',function(table){
           table.increments('id').primary();
-          table.string('first_name');
-          table.string('last_name');
-          table.string('email');
-          table.string('password');
+          table.string('first_name').notNullable();
+          table.string('last_name').notNullable();
+          table.string('email').unique().notNullable();
+          table.string('password').notNullable();
           table.biginteger('phone_number',20);
       }),
 
@@ -17,9 +17,9 @@ exports.up = function(knex, Promise) {
           table.string('location');
           table.biginteger('size');
           table.string('website');
-          
+
       })]).then(function() {
-      
+
         return knex.schema.createTable('jobs',function(table){
             table.increments('id').primary();
             table.string('position');
@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
             table.biginteger('company_id',20).references('id').inTable('companies');
         });
       }).then(function(){
-      
+
         return knex.schema.createTable('user_jobs',function (table) {
             table.increments('id').primary();
             table.biginteger('user_id',20).references('id').inTable('users');
@@ -37,7 +37,7 @@ exports.up = function(knex, Promise) {
             table.string('notes');
         })
       }).then(function () {
-      
+
         return knex.schema.createTable('user_job_stages',function (table) {
             table.increments('id').primary();
             table.biginteger('user_id',20).references('id').inTable('users');
@@ -46,7 +46,7 @@ exports.up = function(knex, Promise) {
             table.string('notes');
         })
       }).then(function () {
-      
+
         return knex.schema.createTable('interview_questions',function (table) {
             table.increments('id').primary();
             table.biginteger('user_id',20).references('id').inTable('users');
@@ -55,7 +55,7 @@ exports.up = function(knex, Promise) {
             table.string('question');
         })
       }).then(function () {
-      
+
         return knex.schema.createTable('reviews',function (table) {
             table.increments('id').primary();
             table.biginteger('company_id',20).references('id').inTable('companies');
