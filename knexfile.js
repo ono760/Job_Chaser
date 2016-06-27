@@ -11,16 +11,12 @@ module.exports = {
   
   staging:{
     client:'pg',
-    connection: 'postgres://localhost:5432/q2project'
+    connection: process.env.DATABASE_URL
   },
   
   production: {
     client: 'pg',
-    connection: {
-      database: 'q2project',
-      user:     'username',
-      password: 'password'
-    },
+    connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
       max: 15
