@@ -1,0 +1,15 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Login
+  body
+    h1 Login
+    form(method='POST', action='/login')
+      input(type='text', name='email', placeholder='E-mail Address')
+      br
+      input(type='password', name='password')
+      br
+      input(type='submit', value='Login')
+      br
+    a(href='/signup') Not a member? Sign-up here for free!
