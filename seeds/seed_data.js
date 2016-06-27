@@ -1,28 +1,28 @@
 exports.seed = function(knex, Promise) {
-    return Promise.all([
-        Promise.all([
-            knex('reviews').del()
-        ])
-            .then(function () {
-                knex('interview_questions').del()
-            })
-            .then(function () {
-                knex('user_job_stages').del()
-            })
-            .then(function () {
-                knex('user_jobs').del()
-            })
-            .then(function () {
-                knex('jobs').del()
-            })
-            .then(function () {
-                knex('companies').del()
-            })
-            .then(function () {
-                knex('users').del()
-
-            })
+return Promise.all([
+    Promise.all([
+        knex('reviews').del()
     ])
+        .then(function () {
+            knex('interview_questions').del()
+        })
+        .then(function () {
+            knex('user_job_stages').del()
+        })
+        .then(function () {
+            knex('user_jobs').del()
+        })
+        .then(function () {
+            knex('jobs').del()
+        })
+        .then(function () {
+            knex('companies').del()
+        })
+        .then(function () {
+            knex('users').del()
+
+        })
+])
         //insert seed data to each table
         .then(function () {
             return Promise.all([
