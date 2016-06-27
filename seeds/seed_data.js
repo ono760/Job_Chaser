@@ -1,4 +1,3 @@
-
 exports.seed = function(knex, Promise) {
     return Promise.all([
         Promise.all([
