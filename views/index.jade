@@ -19,14 +19,15 @@ block content
       if totalPages
         .pagination-centered
           ul.pagination
-            li.current
-              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)-1}') #{parseInt(page)}
+            if page > 1
+              li.current
+                a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)-1}') #{parseInt(page)-1}
             li
-              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)}') #{parseInt(page)+1}
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)}') #{parseInt(page)}
             li
-              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+1}') #{parseInt(page)+2}
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+1}') #{parseInt(page)+1}
             li
-              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+2}') #{parseInt(page)+3}
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+2}') #{parseInt(page)+2}
             li.unavailable
               a(href='') …
             li
