@@ -7,3 +7,10 @@ block content
     input(type='text', name='title', placeholder='Search for jobs..')
     input(type='text', name='location', placeholder='Location')
     input(type='submit', name='submit_btn', value='Search')
+  ul
+  if err
+    li No results found
+  else
+    each job in data
+      li
+        a(href= data.url)= data.jobtitle
