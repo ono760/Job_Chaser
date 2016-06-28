@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
         var jobs = JSON.parse(data.body);
         res.render('index', {err:err, jobs:jobs});
     });
-
 });
 
 module.exports = router;
