@@ -16,26 +16,23 @@ block content
               br
               strong #{job.company} - #{job.city}, #{job.state}
               br
-      .pagination-centered
-        ul.pagination
-          li.arrow
-            a(href='/jobs?#{currentQuery}&page=') «
-          li.current
-            a(href='') 1
-          li
-            a(href='') 2
-          li
-            a(href='') 3
-          li
-            a(href='') 4
-          li.unavailable
-            a(href='') …
-          li
-            a(href='') 12
-          li
-            a(href='') 13
-          li.arrow
-            a(href='') »
+      if totalPages
+        .pagination-centered
+          ul.pagination
+            li.current
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)-1}') #{parseInt(page)}
+            li
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)}') #{parseInt(page)+1}
+            li
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+1}') #{parseInt(page)+2}
+            li
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+2}') #{parseInt(page)+3}
+            li.unavailable
+              a(href='') …
+            li
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{totalPages-1}') #{totalPages - 1}
+            li
+              a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{totalPages}') #{totalPages}
   script(src='/js/vendor/jquery.js')
   script(src='/js/vendor/fastclick.js')
   script.
