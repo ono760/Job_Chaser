@@ -4,16 +4,16 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection:'postgres://localhost:5432/q2project',
-    debug:true
-    
+    connection: 'postgres://localhost:5432/q2project',
+    debug: true
+
   },
-  
-  staging:{
-    client:'pg',
+
+  staging: {
+    client: 'pg',
     connection: process.env.DATABASE_URL
   },
-  
+
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
@@ -24,3 +24,5 @@ module.exports = {
   }
 
 };
+
+//# sourceMappingURL=knexfile-compiled.js.map
