@@ -1,1 +1,1 @@
-{"version":3,"sources":["script.js"],"names":[],"mappings":"","file":"script-compiled.js","sourcesContent":[""]}
+{"version":3,"sources":["script.js"],"names":[],"mappings":"AAAA,EAAE,YAAU;AACR;;AACA,MAAE,YAAF,EAAgB,KAAhB,CAAsB,UAAS,CAAT,EAAW;AAC7B,UAAE,cAAF;AACA,UAAE,IAAF,EAAQ,MAAR,CAAe,KAAK,GAApB;AACH,KAHD;AAIH,CAND","file":"script-compiled.js","sourcesContent":["$(function(){\n    \"use strict\";\n    $('.job-modal').click(function(e){\n        e.preventDefault();\n        $(this).append(html.raw);\n    });\n});\n\n"]}

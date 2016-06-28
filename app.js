@@ -44,7 +44,8 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(expressSession({ secret: 'secret here' }));
+app.use(expressSession({ secret: 'secret here',resave: true,
+    saveUninitialized: true }));
 
 passport.serializeUser(function(user, done) {
     //later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
