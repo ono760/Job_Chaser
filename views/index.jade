@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Job Chaser
   form(action='/jobs', method='GET', id="form")
     input(type='text', name='title', placeholder='Search for jobs..')
     input(type='text', name='location', placeholder='Location')
