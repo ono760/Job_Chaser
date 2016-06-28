@@ -8,8 +8,6 @@ block content
     input(type='text', name='location', placeholder='Location')
     input(type='submit', name='submit_btn', value='Search')
   ul
-  if err
-    li No results found
-  else if data
+  if data
     each job in data
       li= job.jobtitle 
