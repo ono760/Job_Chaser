@@ -9,4 +9,8 @@ block content
   ul
     if jobs
       each job in jobs
-        li= job.jobtitle 
+        li
+        a(href= job.url)= job.jobtitle
+        br
+        strong
+          job.company - job.city, job.state
