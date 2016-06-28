@@ -1,4 +1,3 @@
-
 exports.seed = function (knex, Promise) {
     return Promise.all([Promise.all([knex('reviews').del()]).then(function () {
         knex('interview_questions').del();
