@@ -4,5 +4,6 @@ $(function(){
         e.preventDefault();
         $(this).append(html.raw);
     });
+    var;
 });
 
