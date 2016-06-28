@@ -10,6 +10,6 @@ block content
   ul
   if err
     li No results found
-  else
+  else if data
     each job in data
       li= job.jobtitle 
