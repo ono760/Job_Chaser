@@ -5,33 +5,24 @@ html
   link(rel='icon', type='image/png', href='/images/favicomatic/favicon-32x32.png', sizes='32x32')
   link(rel='icon', type='image/png', href='/images/favicomatic/favicon-16x16.png', sizes='16x16')
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js")
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js')
+  link(rel='stylesheet',href='https://fonts.googleapis.com/icon?family=Material+Icons')
   link(href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css')
-  link(rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css")
-  script(src="/stylesheets/foundation-6.2.3-custom 2/js/vendor/what-input.js")
-  script(src="/stylesheets/foundation-6.2.3-custom 2/js/vendor/foundation.min.js")
-  link(rel='stylesheet', href='/stylesheets/foundation-6.2.3-custom 2/css/app.css')
-  script(src='/js/foundation.min.js')
+  script(src="/scripts/script.js")
+  link(rel='stylesheet',href='/stylesheets/style.css')
   body
-      .title-bar(data-responsive-toggle='example-menu', data-hide-for='medium')
-          button.menu-icon(type='button', data-toggle='')
-          .title-bar-title Menu
-      #example-menu.top-bar
-          .top-bar-left
-              ul.dropdown.menu(data-dropdown-menu='')
-                  li.menu-text Job Chaser
-                  li
-                      a(href='/jobs') Jobs
-                  li
-                      a(href='/companies') Companies
-                  li
-                      a(href='/salaries') Salaries
-                  li
-                      a(href='/interviews') Interviews
-          .top-bar-right
-              ul.menu
-                  li
-                      input(type='search', placeholder='Search')
-                  li
-                      button.button(type='button') Search
+         nav
+              .nav-wrapper
+                  a.brand-logo.center(href='#!') Job Chaser
+                  ul.right.hide-on-med-and-down
+                      li
+                          a(href='sass.html') Sass
+                      li
+                          a(href='badges.html') Components
+                      li.active
+                          a(href='collapsible.html') JavaScript
 
-        block content
+
+
+          block content

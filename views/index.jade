@@ -1,21 +1,36 @@
 extends layout
 
 block content
-  h1 Job Chaser
+  br
+  .container
   .row
-    .small-4.small-offset-4.medium-4.medium-offset-4.large-4.large-offset-4.columns
+    .col.s12
       form(action='/jobs', method='GET', id="form")
-        input(type='text', name='title', placeholder='Search for jobs')
-        input(type='text', name='location', placeholder='Location')
-        input(type='submit', name='submit_btn', value='Search', class='hollow button')
-      ul(class='job-list')
+        .row
+          .input-field.col.s6.offset-s3.col.m4.offset-m4.col.l4.offset-l4
+            i.material-icons.prefix search
+            input#icon_prefix.validate(type='text', name='title')
+            label(for='icon_prefix') Search for jobs
+        .row
+          .input-field.col.s6.offset-s3.col.m4.offset-m4.col.l4.offset-l4
+            i.material-icons.prefix location_on
+            input#icon_prefix.validate(type='text', name='location')
+            label(for='icon_prefix') Location
+            button.btn.waves-effect.waves-light(type='submit', name='action')
+              | Submit
+              i.material-icons.right send
+
+      ul
         if jobs
           each job in jobs
             li(class='job-li')
-              a(href= job.url)= job.jobtitle
+            a(href=job.url)=job.jobtitle
               br
-              strong #{job.company} - #{job.city}, #{job.state}
+              | #{job.company}, #{job.city} #{job.state}
               br
+              a(href= job.url) apply now
+              br
+<<<<<<< HEAD
       if totalPages
         .pagination-centered
           ul.pagination
@@ -38,3 +53,25 @@ block content
   script(src='/js/vendor/fastclick.js')
   script.
       $(document).foundation();
+=======
+        .container
+          .col.s2.offset-s3.col.m6.offset-m3.col.l6.offset-l3.center
+            ul.pagination
+              li.disabled
+                a(href='#!')
+                  i.material-icons chevron_left
+              li.active
+                a(href='#!') 1
+              li.waves-effect
+                a(href='#!') 2
+              li.waves-effect
+                a(href='#!') 3
+              li.waves-effect
+                a(href='#!') 4
+              li.waves-effect
+                a(href='#!') 5
+              li.waves-effect
+                a(href='#!')
+                  i.material-icons chevron_right
+
+>>>>>>> 86208c2db0942ea007cb2045994743151d119a63
