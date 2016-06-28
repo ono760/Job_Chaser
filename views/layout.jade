@@ -12,6 +12,14 @@ html
   script(src="/scripts/script.js")
   link(rel='stylesheet',href='/stylesheets/style.css')
   body
+  if user
+      p
+        |Hello #{user.displayName}
+        ||
+        a(href="/logout") Logout
+  else
+      p
+        a(href="/auth/linkedin") Login
          nav
               .nav-wrapper
                   a.brand-logo.center(href='#!') Job Chaser

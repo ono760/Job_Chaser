@@ -67,12 +67,16 @@ passport.use(new LinkedInStrategy({
     return done(null, {id:profile.id, displayName: profile.displayName, token: accessToken});
 }));
 
-app.use('/auth', auth);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+  res.locals.user = req.user
+  next()
+});
 app.use('/', routes);
+app.use('/auth', auth);
 app.use('/users', users);
 app.use('/jobs', jobs);
 app.use('/login', login);
