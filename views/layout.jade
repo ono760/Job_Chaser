@@ -12,6 +12,14 @@ html
   link(rel='stylesheet', href='/stylesheets/foundation-6.2.3-custom 2/css/app.css')
   script(src='/js/foundation.min.js')
   body
+      if user
+        p
+          |Hello #{user.displayName}
+          ||
+          a(href="/logout") Logout
+      else
+        p
+          a(href="/auth/linkedin") Login
       .title-bar(data-responsive-toggle='example-menu', data-hide-for='medium')
           button.menu-icon(type='button', data-toggle='')
           .title-bar-title Menu
