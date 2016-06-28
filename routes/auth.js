@@ -5,13 +5,12 @@ var passport = require('passport');
 router.get('/linkedin',
   passport.authenticate('linkedin'),
   function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
+
   });
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', {
-    successRedirect: '/',
-    failureRedirect: '/login'
+    successRedirect: '/jobs',
+    failureRedirect: '/'
 }));
 
 router.get('/logout', function(req, res){
