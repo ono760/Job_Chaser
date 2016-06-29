@@ -48,4 +48,4 @@ fabric.properties
 node_modules/
 *.DS_Store/
 .xml
-.env
+*.env
