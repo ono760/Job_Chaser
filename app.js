@@ -5,11 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
+var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 require('dotenv').load();
 var request = require('request');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+var auth = require('./routes/auth');
+
+var passport = require('passport')
+var expressSession = require('express-session');
+
 var jobs = require('./routes/jobs');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
@@ -35,6 +41,35 @@ app.use(cookieSession({
 		process.env.SESSION_KEY3
 	]
 }));
+
+app.use(passport.initialize());
+app.use(expressSession({ secret: 'secret here',
+resave: true,
+saveUninitialized: true }));
+
+passport.serializeUser(function(user, done) {
+    //later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
+    done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+    //here is where you will go to the database and get the user each time from it's id, after you set up your db
+    done(null, obj);
+});
+
+passport.use(new LinkedInStrategy({
+  clientID: process.env.LINKEDIN_CLIENT_ID,
+  clientSecret:process.env.LINKEDIN_CLIENT_SECRET,
+  callbackURL: process.env.HOST + "/auth/linkedin/callback",
+  scope: ['r_emailaddress', 'r_basicprofile'],
+  state:true
+}, function(accessToken, refreshToken, profile, done) {
+    return done(null, {id:profile.id, displayName: profile.displayName, token: accessToken});
+}));
+
+app.use('/auth', auth);
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
