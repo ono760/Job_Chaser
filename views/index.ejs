@@ -71,13 +71,15 @@
                 <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)-1 %>"><i class="material-icons">chevron_left</i></a></li>
                 <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=1">1...</a></li>
               <% } %>
-              <li class="active"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page) %>"><%= parseInt(page) %></a></li>
-              <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><%= parseInt(page)+1 %></a></li>
-              <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+2 %>"><%= parseInt(page)+2 %></a></li>
-              <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+3 %>"><%= parseInt(page)+3 %></a></li>
-              <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+4 %>"><%= parseInt(page)+4 %></a></li>
-              <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(totalPages) %>">...<%= parseInt(totalPages) %></a></li>
-              <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><i class="material-icons">chevron_right</i></a></li>
+              <% if (currentQuery.title) { %>
+                <li class="active"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page) %>"><%= parseInt(page) %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><%= parseInt(page)+1 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+2 %>"><%= parseInt(page)+2 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+3 %>"><%= parseInt(page)+3 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+4 %>"><%= parseInt(page)+4 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(totalPages) %>">...<%= parseInt(totalPages) %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><i class="material-icons">chevron_right</i></a></li>
+              <% } %>
             </ul>
           </div>
         </div>
