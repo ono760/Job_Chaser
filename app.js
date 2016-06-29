@@ -9,11 +9,11 @@ var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 require('dotenv').load();
 var request = require('request');
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
 
 var auth = require('./routes/auth');
 
-var passport = require('passport')
+var passport = require('passport');
 var expressSession = require('express-session');
 
 var jobs = require('./routes/jobs');
@@ -73,7 +73,7 @@ app.use('/auth', auth);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/user', user);
 app.use('/jobs', jobs);
 app.use('/login', login);
 app.use('/signup', signup);
