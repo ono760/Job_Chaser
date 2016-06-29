@@ -1,10 +1,10 @@
 $(function () {
     "use strict";
 
-    $('.job-modal').click(function (e) {
+    $('.job-li').click(function (e) {
         e.preventDefault();
-        $(this).append(html.raw);
     });
+    $('.modal-trigger').leanModal();
 });
 
 //# sourceMappingURL=script-compiled.js.map
