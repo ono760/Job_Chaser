@@ -13,7 +13,7 @@ var request = require('request');
 var expressSession = require('express-session');
 
 //passport
-var passport = require('passport')
+var passport = require('passport');
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 require('dotenv').load();
 
@@ -81,7 +81,7 @@ passport.use(new LinkedInStrategy({
 
 app.use(function (req, res, next) {
   if (req.session.passport) res.locals.user = req.session.passport.user || null;
-  next()
+  next();
 });
 
 app.use('/', routes);
