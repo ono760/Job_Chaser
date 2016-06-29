@@ -49,3 +49,5 @@ node_modules/
 *.DS_Store/
 .xml
 *.env
+.DS_Store
+public/.DS_Store
