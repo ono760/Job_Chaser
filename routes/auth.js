@@ -9,12 +9,13 @@ router.get('/linkedin',
   });
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', {
-    successRedirect: '/jobs',
+    successRedirect: '/',
     failureRedirect: '/'
 }));
 
 router.get('/logout', function(req, res){
     req.logout();
+    req.clearCookie();
     res.redirect('/');
 });
 
