@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,17 +43,16 @@
             </div>
           </form>
           <ul>
-
           <% if (jobs) { %>
           <% jobs.forEach(function(job){ %>
             <li class="job-li">
               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light modal-trigger" href="#modal1"><strong><%= job.jobtitle %></strong><br></a>
+              <a class="waves-effect waves-light modal-trigger" href="#modal1"><strong><%= job.jobtitle %></strong></a><br>
               <!-- Modal Structure -->
               <div id="modal1" class="modal">
                 <div class="modal-content">
-                  <h4>Modal Header</h4>
-                  <p>A bunch of text</p>
+                  <h4><%= job.jobtitle %></h4>
+                  <p><%= job.snippet %></p>
                 </div>
                 <div class="modal-footer">
                   <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -70,13 +68,15 @@
           <div class="col s2 offset-s3 col m6 offset-m3 col l6 offset-l3 center">
             <ul class="pagination">
               <% if (page > 1) { %>
-                <li class="disabled"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)-1 %>"><i class="material-icons">chevron_left</i></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)-1 %>"><i class="material-icons">chevron_left</i></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=1">1...</a></li>
               <% } %>
               <li class="active"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page) %>"><%= parseInt(page) %></a></li>
               <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><%= parseInt(page)+1 %></a></li>
               <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+2 %>"><%= parseInt(page)+2 %></a></li>
               <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+3 %>"><%= parseInt(page)+3 %></a></li>
               <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+4 %>"><%= parseInt(page)+4 %></a></li>
+              <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(totalPages) %>">...<%= parseInt(totalPages) %></a></li>
               <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><i class="material-icons">chevron_right</i></a></li>
             </ul>
           </div>
