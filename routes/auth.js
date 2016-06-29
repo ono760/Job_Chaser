@@ -5,12 +5,11 @@ var passport = require('passport');
 router.get('/linkedin',
   passport.authenticate('linkedin'),
   function(req, res){
-
   });
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', {
     successRedirect: '/',
-    failureRedirect: '/'
+    failureRedirect: '/login'
 }));
 
 router.get('/logout', function(req, res){

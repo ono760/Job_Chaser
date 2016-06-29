@@ -50,4 +50,6 @@ node_modules/
 .xml
 *.env
 .DS_Store
-public/.DS_Store
+**-compiled.js
+**.map
+
