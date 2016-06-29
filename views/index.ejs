@@ -44,15 +44,15 @@
           </form>
           <ul>
           <% if (jobs) { %>
-          <% jobs.forEach(function(job){ %>
+          <% jobs.forEach(function(job, index){ %>
             <li class="job-li">
               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light modal-trigger" href="#modal1"><strong><%= job.jobtitle %></strong></a><br>
+              <a class="waves-effect waves-light modal-trigger" href="#modal<%= index %>"><strong><%= job.jobtitle %></strong></a><br>
               <!-- Modal Structure -->
-              <div id="modal1" class="modal">
+              <div id="modal<%= index %>" class="modal">
                 <div class="modal-content">
                   <h4><%= job.jobtitle %></h4>
-                  <p><%= job.snippet %></p>
+                  <p><%- job.snippet %></p>
                 </div>
                 <div class="modal-footer">
                   <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
