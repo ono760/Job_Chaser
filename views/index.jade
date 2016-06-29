@@ -16,15 +16,17 @@ block content
             i.material-icons.prefix location_on
             input#icon_prefix.validate(type='text', name='location')
             label(for='icon_prefix') Location
-            button.btn.waves-effect.waves-light(type='submit', name='action')
-              | Submit
-              i.material-icons.right send
+            .row
+              .col.l2.offset-l5.col.s6.offset-s3
+                button.btn.waves-effect.waves-light(type='submit', name='action',id='submit-button')
+                  | Submit
+                  i.material-icons.right send
 
       ul
         if jobs
           each job in jobs
             li(class='job-li')
-            a(href=job.url)=job.jobtitle
+              |#{job.jobtitle}
               br
               | #{job.company}, #{job.city} #{job.state}
               br

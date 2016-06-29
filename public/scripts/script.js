@@ -4,7 +4,7 @@ $(function(){
         e.preventDefault();
         $.ajax({
             url: ''
-        })
+        });
         $('.modalH4').html('ModalHeader');
         $('.modalP').html('bunch of text');
     });
