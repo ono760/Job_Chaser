@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h1 Job Chaser
+  br
+  .container
   .row
     .col.s12
       form(action='/jobs', method='GET', id="form")
@@ -32,20 +33,20 @@ block content
         .container
           .col.s2.offset-s3.col.m6.offset-m3.col.l6.offset-l3.center
             ul.pagination
-              if page > 1
-                li.waves-effect
-                  a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)-1}')
-                    i.material-icons chevron_left
+              li.disabled
+                a(href='#!')
+                  i.material-icons chevron_left
               li.active
-                a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)}') #{parseInt(page)}
+                a(href='#!') 1
               li.waves-effect
-                a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+1}') #{parseInt(page)+1}
+                a(href='#!') 2
               li.waves-effect
-                a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+2}') #{parseInt(page)+2}
+                a(href='#!') 3
               li.waves-effect
-                a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+3}') #{parseInt(page)+3}
+                a(href='#!') 4
               li.waves-effect
-                a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+4}') #{parseInt(page)+4}
+                a(href='#!') 5
               li.waves-effect
-                a(href='/jobs?title=#{currentQuery.title}&location=#{currentQuery.location}&page=#{parseInt(page)+1}')
+                a(href='#!')
                   i.material-icons chevron_right
+
