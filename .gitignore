@@ -51,3 +51,5 @@ node_modules/
 *.env
 .DS_Store
 public/.DS_Store
+**-compiled.js
+**.map
