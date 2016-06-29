@@ -17,11 +17,12 @@ html
         a.brand-logo.center(href='#!') Job Chaser
         ul.right.hide-on-med-and-down
           li
-            a(href='sass.html') Sass
+            a(href='sass.html') About
           li
-            a(href='badges.html') Components
+            a(href='badges.html') Companies
           li.active
-            a(href='collapsible.html') JavaScript
+            a(href='/signup') Sign up
+
           if user
             li
               |Hello #{user.displayName}
@@ -29,7 +30,7 @@ html
               a(href="/logout") Logout
           else
             li
-              a(href="/auth/linkedin") Login
+              a(href="/login") Login
 
 
 
