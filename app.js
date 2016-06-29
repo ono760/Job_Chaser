@@ -1,26 +1,32 @@
+//app setup
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
+
+//middleware
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
-var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-require('dotenv').load();
 var request = require('request');
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
-var auth = require('./routes/auth');
-
-var passport = require('passport')
 var expressSession = require('express-session');
 
+//passport
+var passport = require('passport')
+var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+require('dotenv').load();
+
+//routes
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var auth = require('./routes/auth');
 var jobs = require('./routes/jobs');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
 
-var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,17 +38,20 @@ app.use(favicon(path.join(__dirname, '/public/images/favicomatic/favicon.ico')))
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(cookieSession({
-	name: 'session',
-	keys: [
-		process.env.SESSION_KEY1,
-		process.env.SESSION_KEY2,
-		process.env.SESSION_KEY3
-	]
+  name: 'session',
+  keys: [
+    process.env.SESSION_KEY1,
+    process.env.SESSION_KEY2,
+    process.env.SESSION_KEY3
+  ]
 }));
 
 app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(expressSession({ secret: 'secret here',
 resave: true,
 saveUninitialized: true }));
@@ -69,14 +78,12 @@ passport.use(new LinkedInStrategy({
 
 
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
-  res.locals.user = req.session.passport.user;
-  console.log(res.locals);
-  console.log(req.session);
+  if (req.session.passport) res.locals.user = req.session.passport.user || null;
   next()
 });
+
 app.use('/', routes);
 app.use('/auth', auth);
 app.use('/users', users);
