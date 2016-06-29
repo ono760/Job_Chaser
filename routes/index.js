@@ -10,7 +10,7 @@ var bcrypt = require("bcrypt");
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	console.log(req.user);
-  res.render('index', { title: 'Job Search'});
+  res.render('index', { title: 'Job Search', currentQuery: {}});
 
 });
 
