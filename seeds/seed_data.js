@@ -36,14 +36,26 @@ return Promise.all([
             return Promise.all([
                 knex('companies').insert({name:'google', location: 'mountain view', size:'57000', website:'google.com'}),
                 knex('companies').insert({name:'facebook', location: 'palo alto', size:'13000', website:'facebook.com'}),
-                knex('companies').insert({name:'apple', location: 'cupertino', size:'66000', website:'apple.com'})
+                knex('companies').insert({name:'apple', location: 'cupertino', size:'66000', website:'apple.com'}),
+
             ]);
         })
         .then(function () {
             return Promise.all([
                 knex('jobs').insert({position:'front-end engineer', link_to_application:'indeed.com', salary:'100000',company_id:1}),
                 knex('jobs').insert({position:'back-end engineer', link_to_application:'indeed.com', salary:'120000',company_id:2}),
-                knex('jobs').insert({position:'full-stack engineer', link_to_application:'indeed.com', salary:'150000',company_id:3})
+                knex('jobs').insert({position:'full-stack engineer', link_to_application:'indeed.com', salary:'150000',company_id:3}),
+                knex('jobs').insert({position:'Jr. Java Dev', link_to_application:'indeed.com', salary:'100000',company_id:1}),
+                knex('jobs').insert({position:'Sr. C++ Dev', link_to_application:'indeed.com', salary:'170000',company_id:2}),
+                knex('jobs').insert({position:'CEO', link_to_application:'indeed.com', salary:'1000000',company_id:1}),
+                knex('jobs').insert({position:'Web Application Intern', link_to_application:'indeed.com', salary:'70000',company_id:3}),
+                knex('jobs').insert({position:'Web Developer II', link_to_application:'indeed.com', salary:'90000',company_id:3}),
+                knex('jobs').insert({position:'Jr. Android Developer I', link_to_application:'indeed.com', salary:'75000',company_id:2}),
+                knex('jobs').insert({position:'Programmer Analyst', link_to_application:'indeed.com', salary:'95000',company_id:1}),
+                knex('jobs').insert({position:'Application Software engineer', link_to_application:'indeed.com', salary:'88000',company_id:2}),
+                knex('jobs').insert({position:'Mobile Software Developer', link_to_application:'indeed.com', salary:'100000',company_id:1}),
+                knex('jobs').insert({position:'Programmer Analyst III', link_to_application:'indeed.com', salary:'120000',company_id:1})
+
             ]);
         })
         .then(function () {
