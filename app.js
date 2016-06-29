@@ -72,7 +72,7 @@ passport.use(new LinkedInStrategy({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
-  res.locals.user = req.user;
+  res.locals.user = req.session.passport.user;
   console.log(res.locals);
   console.log(req.session);
   next()
