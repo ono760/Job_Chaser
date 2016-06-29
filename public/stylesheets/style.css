@@ -6,3 +6,11 @@
     background-color: #0b97c4;
 }
 
+#login-id{
+    text-align: center;
+}
+
+#login-button{
+    position:relative;
+    /*left:137px;*/
+}
