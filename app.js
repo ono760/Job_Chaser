@@ -77,8 +77,6 @@ passport.use(new LinkedInStrategy({
 }));
 
 
-
-
 app.use(function (req, res, next) {
   if (req.session.passport) res.locals.user = req.session.passport.user || null;
   next()
