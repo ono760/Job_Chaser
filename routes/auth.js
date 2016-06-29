@@ -5,7 +5,6 @@ var passport = require('passport');
 router.get('/linkedin',
   passport.authenticate('linkedin'),
   function(req, res){
-
   });
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', {
