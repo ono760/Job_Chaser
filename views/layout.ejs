@@ -33,6 +33,11 @@
             <li><a href="badges.html">Companies</a></li>
             <li class="active"><a href="/signup">Sign up</a></li>
             <li><a href="/login">Login</a></li>
+            <% if (user) { %>
+            <li>Hello <%= user.displayName %> <a href="/logout">Logout</a></li>
+            <% } else { %>
+            <li><a href="/login">Login</a></li>
+            <% } %>
         </ul>
     </div>
 </nav>

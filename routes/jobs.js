@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
         let jobs = JSON.parse(data.body).results;
         let totalPages = Math.floor((JSON.parse(data.body).totalResults)/10);
         console.log(JSON.parse(data.body).start, 'start');
-        // console.log(jobs, 'foo')
+        console.log(jobs, 'foo')
         res.render('index', {err:err,
                             jobs:jobs,
                             currentQuery:currentQuery,
