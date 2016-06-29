@@ -1,14 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Signup</title>
+    <title></title>
+    <link rel="icon" type="image/png" href="/images/favicomatic/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicomatic/favicon-16x16.png" sizes="16x16">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet" type="text/css">
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/password-verification.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-
+<header>
+    <nav>
+        <div class="nav-wrapper"><a href="/" class="brand-logo center">Job Chaser</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html">About</a></li>
+                <li><a href="badges.html">Companies</a></li>
+                <li class="active"><a href="/signup">Sign up</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
 <body>
-<form action="/signup" method="POST"><input type="text" name="firstName" placeholder="First Name"><input type="text" name="lastName" placeholder="Last Name"><input type="email" name="email" placeholder="E-mail Address"><input type="password" name="password" placeholder="Password">
-    <input
-            type="password" name="confirmPassword" placeholder="Confirm password"><input type="text" name="phone" placeholder="(555)555-5555"><input type="submit" value="Sign UP!"></form>
+<h2 style="text-align: center"> Sign Up</h2>
+
+<container>
+    <div class="row">
+        <form class="col s6 offset-s3" id="signup-form">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input  id="phone_number" type="text" class="validate">
+                    <label for="phone_number">Phone Number</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="confirm_password" type="password" class="validate">
+                    <label for="confirm_password">Confirm Password</label>
+                    <span class ='blank_warning'></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <container>
+        <form method="GET" action="/login" id="sign-up-button">
+        <div class = 'row'>
+        <div class = 'col s6 offset-s5'>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+        </div>
+            </form>
+    </container>
+
+</container>
 </body>
 </html>

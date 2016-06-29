@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 
 <head>
     <title></title>
@@ -60,3 +61,93 @@
 </body>
 
 </html>
+=======
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Job Chaser</title>
+    <link rel="icon" type="image/png" href="/images/favicomatic/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicomatic/favicon-16x16.png" sizes="16x16">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet" type="text/css">
+    <script src="/scripts/script.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper"><a href="#!" class="brand-logo center">Job Chaser</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html">About</a></li>
+          <li><a href="badges.html">Companies</a></li>
+          <li class="active"><a href="/signup">Sign up</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <form action="/jobs" method="GET" id="form">
+            <div class="row">
+              <div class="input-field col s6 offset-s3 col m4 offset-m4 col l4 offset-l4"><i class="material-icons prefix">search</i><input id="icon_prefix" type="text" name="title" class="validate"><label for="icon_prefix">Search for jobs</label></div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6 offset-s3 col m4 offset-m4 col l4 offset-l4"><i class="material-icons prefix">location_on</i><input id="icon_prefix" type="text" name="location" class="validate"><label for="icon_prefix">Location</label>
+                <div class="row">
+                  <div class="col l2 offset-l5 col s6 offset-s3"><button type="submit" name="action" id="submit-button" class="btn waves-effect waves-light">Submit<i class="material-icons right">send</i></button></div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <ul>
+          <% if (jobs) { %>
+          <% jobs.forEach(function(job){ %>
+            <li class="job-li">
+              <!-- Modal Trigger -->
+              <a class="waves-effect waves-light modal-trigger" href="#modal1"><strong><%= job.jobtitle %></strong></a><br>
+              <!-- Modal Structure -->
+              <div id="modal1" class="modal">
+                <div class="modal-content">
+                  <h4><%= job.jobtitle %></h4>
+                  <p><%= job.snippet %></p>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+              </div>
+              <%= job.company %> - <%= job.city %>, <%= job.state %><br>
+              <a href="<%= job.url %>">Apply Now</a>
+            </li>
+          <% }) %>
+          <% } %>
+          </ul>
+        <div class="row">
+          <div class="col s2 offset-s3 col m6 offset-m3 col l6 offset-l3 center">
+            <ul class="pagination">
+              <% if (page > 1) { %>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)-1 %>"><i class="material-icons">chevron_left</i></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=1">1...</a></li>
+              <% } %>
+              <% if (currentQuery.title) { %>
+                <li class="active"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page) %>"><%= parseInt(page) %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><%= parseInt(page)+1 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+2 %>"><%= parseInt(page)+2 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+3 %>"><%= parseInt(page)+3 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+4 %>"><%= parseInt(page)+4 %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(totalPages) %>">...<%= parseInt(totalPages) %></a></li>
+                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><i class="material-icons">chevron_right</i></a></li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+>>>>>>> master
