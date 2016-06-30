@@ -8,6 +8,7 @@ var bcrypt = require("bcrypt");
 const USERS = function() {
   return knex('users');
 };
+console.log(USERS);
 
 router.get('/', function(req, res){
   console.log(req.session.passport.user);
@@ -15,22 +16,22 @@ router.get('/', function(req, res){
 });
 
 router.post('/', function(req, res){
-  console.log('foo');
+  console.log(req.body.email);
   USERS().where({email:req.body.email})
   .first().then(function(user){
     if(!user) {
       var hash = bcrypt.hashSync(req.body.password, 8);
       knex('users').insert({
-        first_name: req.body.firstName,
-        last_name: req.body.lastName,
-        email: req.body.email,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        phone_number: req.body.phone_number,
         password: hash,
-        phone_number: req.body.phone
+        email: req.body.email
       }).returning('*').then(function(newUser) {
         res.redirect(`/user/${newUser[0].id}`);
       });
     } else {
-      res.send('Email already exists');
+      res.render('signup', {err:false})
     }
   }).catch(function(err) {
     res.send("Error signing up " + err);
