@@ -13,9 +13,9 @@ router.get('/', function(req, res){
   res.render('signup');
 });
 
-router.post('/', function(req, res){
-  USERS().where({email:req.body.email})
-  .first().then(function(user){
+// router.post('/', function(req, res){
+  router.post('/', function(req, res){
+  USERS().where({email:req.body.email}).first().then(function(user){
     if(!user) {
       var hash = bcrypt.hashSync(req.body.password, 8);
       knex('users').insert({
@@ -24,15 +24,21 @@ router.post('/', function(req, res){
         phone_number: req.body.phone_number,
         password: hash,
         email: req.body.email
-      }).returning('*').then(function(newUser) {
-        res.redirect(`/user/${newUser[0].id}`);
+      // }).returning('*').then(function(newUser) {
+      }).then(function() {
+        // res.redirect(`/user/${newUser[0].id}`);
+        res.redirect('/login');
       });
     } else {
-      res.render('signup', {err:false})
+      // res.render('signup', {err:false})
+      res.send("Account Already Exists")
     }
-  }).catch(function(err) {
-    res.send("Error signing up " + err);
-  });
+  })
+  // .catch(function(err) {
+  //   res.send("Error signing up " + err);
+  // });
 });
 
 module.exports = router;
+
+
