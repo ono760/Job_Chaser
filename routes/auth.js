@@ -12,6 +12,8 @@ router.get('/linkedin/callback', passport.authenticate('linkedin', {
     failureRedirect: '/login'
 }));
 
+
+
 router.get('/logout', function(req, res){
     req.logout();
     res.clearCookie();
