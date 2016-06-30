@@ -13,11 +13,18 @@ router.get('/linkedin/callback', passport.authenticate('linkedin', {
 }));
 
 router.get('/logout', function(req, res){
-    // req.logout();
-    //res.clearCookie();
+    req.logout();
+    res.clearCookie();
 
-    req.session = null;
-    res.redirect('/');
+    req.session.user = null;
+    console.log(req.session);
+      res.render('index', { title: 'Job Search', 
+                        currentQuery: {},
+                        user:null,
+                        jobs: null,
+                        page: null,
+     				    totalPages:null
+                      });
 });
 
 module.exports=router;

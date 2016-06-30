@@ -44,3 +44,8 @@
 .row{
     margin-bottom: 0;
 }
+
+#member{
+    position: relative;
+    right: 28px;
+}
