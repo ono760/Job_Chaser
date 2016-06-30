@@ -67,3 +67,8 @@
 #about-quote2 {
     font-weight: 400;
 }
+
+#invalid-pass{
+    text-align: center;
+    color:red;
+}
