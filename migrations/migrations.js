@@ -15,8 +15,6 @@ exports.up = function(knex, Promise) {
           table.increments('id').primary();
           table.string('name');
           table.string('location');
-          table.biginteger('size');
-          table.string('website');
 
       })]).then(function() {
 
@@ -24,7 +22,6 @@ exports.up = function(knex, Promise) {
             table.increments('id').primary();
             table.string('position');
             table.string('link_to_application');
-            table.biginteger('salary');
             table.biginteger('company_id',20).references('id').inTable('companies');
         });
       }).then(function(){
@@ -33,8 +30,6 @@ exports.up = function(knex, Promise) {
             table.increments('id').primary();
             table.biginteger('user_id',20).references('id').inTable('users');
             table.biginteger('job_id',20).references('id').inTable('jobs');
-            table.string('status');
-            table.string('notes');
         });
       }).then(function () {
 
@@ -51,7 +46,7 @@ exports.up = function(knex, Promise) {
             table.increments('id').primary();
             table.biginteger('user_id',20).references('id').inTable('users');
             table.biginteger('user_job_id',20).references('id').inTable('user_jobs');
-            table.biginteger('user_stage',20).references('id').inTable('user_job_stages');
+            table.biginteger('user_job_stage_id',20).references('id').inTable('user_job_stages');
             table.string('question');
         });
       }).then(function () {
