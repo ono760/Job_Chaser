@@ -10,7 +10,7 @@ var bcrypt = require("bcrypt");
 // companies for users jobs and all the reviews for companies
 router.get('/:id', function(req, res, next) {
   let id = req.params.id;
-  console.log(req.session);
+  // console.log(req.session.user);
   knex('users').select().where('users.id', '=', id).then(function(user) {
     knex('user_jobs').select('companies.id as company_id', 'companies.name', 'companies.location').distinct('user_jobs.id')
     .innerJoin('jobs', 'user_jobs.job_id', 'jobs.id')
@@ -50,7 +50,8 @@ router.get('/:id', function(req, res, next) {
             });
             // assemble into mega
             user[0].jobs = jobs;
-            res.json(user[0]);
+            console.log(user[0].jobs);
+            res.render('users', {id:req.params.id, jobs:user[0].jobs});
           });
         });
       });
@@ -59,12 +60,12 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/:id', function(req, res, next){
-  console.log(user[0])
   let review = req.body.reviews;
   let questions = req.body.questions;
   let stage = req.body.stage;
   let notes = req.body.notes;
-  let id = req.session.id;
+  let id = req.param.id;
+  console.log(questions);
   if (questions){
     knex('')
   }

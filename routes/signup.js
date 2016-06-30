@@ -25,7 +25,7 @@ router.post('/', function(req, res){
         password: hash,
         email: req.body.email
       }).returning('*').then(function(newUser) {
-        res.redirect(`/user/${newUser[0].id}`);
+        res.redirect(`/users/${newUser[0].id}`);
       });
     } else {
       res.render('signup', {err:false})
