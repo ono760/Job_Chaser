@@ -24,14 +24,14 @@ return Promise.all([
         })
 ])
         //insert seed data to each table
-        .then(function () {
-            return Promise.all([
-                // Inserts seed entries
-                knex('users').insert({first_name: 'joe', last_name: 'smith', email:'joesmith@abc.com',password:'adhakdh',phone_number:'5555555555'}),
-                knex('users').insert({first_name: 'alex', last_name: 'tom', email:'alextom@abc.com',password:'qweiuqowe',phone_number:'4444444444'}),
-                knex('users').insert({first_name: 'eric', last_name: 'willis', email:'ericwillis@abc.com',password:'mxzdj',phone_number:'3333333333'})
-            ]);
-        })
+        // .then(function () {
+        //     return Promise.all([
+        //         // Inserts seed entries
+        //         knex('users').insert({first_name: 'joe', last_name: 'smith', email:'joesmith@abc.com',password:'adhakdh',phone_number:'5555555555'}),
+        //         knex('users').insert({first_name: 'alex', last_name: 'tom', email:'alextom@abc.com',password:'qweiuqowe',phone_number:'4444444444'}),
+        //         knex('users').insert({first_name: 'eric', last_name: 'willis', email:'ericwillis@abc.com',password:'mxzdj',phone_number:'3333333333'})
+        //     ]);
+        // })
         .then(function () {
             return Promise.all([
                 knex('companies').insert({name:'google', location: 'mountain view'}),

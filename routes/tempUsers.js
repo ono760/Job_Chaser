@@ -11,7 +11,7 @@ router.use(bodyParser.json());
 /* GET users listing. */
 
 router.get('/', function(req, res, next) {
-  res.render('tempUsers')
+  res.render('tempUsers', {id:req.session.id});
 }); //end of router.get
 
 
@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
   console.log(req.body.stage);
   console.log(req.body.notes);
   res.redirect('/tempUsers');
-  res.end()
+  res.end();
 
     // knex('jobs').insert({job_title : req.body.job_title, location:req.body.location, status:req.body.status}).then(function(ids) {
     //     res.json({
@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
     //     })
     // })
 
-})
+});
 
 
 module.exports = router;

@@ -17,9 +17,10 @@ router.get('/', function(req, res){
 router.post('/', function(req, res){
   knex('users').where('email', req.body.email).then(function(user){
     if(user) {
-      if(bcrypt.compareSync(req.body.password, user.password)){
+      if(bcrypt.compareSync(req.body.password, user[0].password)){
+        //set req.session.id equal to users.id in the users table
         req.session.id = user[0].id;
-        res.redirect(`/user/${user[0].id}`);
+        res.redirect(`/users/${user[0].id}`);
       } else {
         res.render('login', {error: 'Email / Password do not match'});
       }
