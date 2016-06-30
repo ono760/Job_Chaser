@@ -16,13 +16,14 @@
 
 <body>
 
-<table>
+<table id='results'>
 
         <thead>
           <tr>
-              <th data-field="job-title">Job Title</th>
-              <th data-field="location">Location</th>
-              <th data-field="status">Status</th>
+              <th data-field="reviews">Reviews</th>
+              <th data-field="questions">Questions</th>
+              <th data-field="stage">Stage</th>
+              <th data-field="notes">Notes</th>
           </tr>
         </thead>
 
@@ -50,28 +51,27 @@
             <td>$7.00</td>
           </tr>
 
-        
-
         </tbody>
       </table>
 
         <div class="row">
     <form class="col s12" method="POST" action="/tempUsers">
       <div class="row">
-        <div class="input-field col s4">
-          <i class="material-icons prefix">account_circle</i>
-          <input name="job_title" id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Job Title</label>
+        <div class="input-field col s3">
+          <input name="reviews" id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Reviews</label>
         </div>
-        <div class="input-field col s4">
-          <i class="material-icons prefix">phone</i>
-          <input name="location" id="icon_telephone" type="tel" class="validate">
-          <label for="icon_telephone">Location</label>
+        <div class="input-field col s3">
+          <input name="questions" id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">Questions</label>
         </div>
-            <div class="input-field col s4">
-          <i class="material-icons prefix">phone</i>
-          <input name="status" id="icon_telephone" type="tel" class="validate">
-          <label for="icon_telephone">Status</label>
+        <div class="input-field col s3">
+          <input name="stage" id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">Stage</label>
+        </div>
+        <div class="input-field col s3">
+          <input name="notes" id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">Notes</label>
         </div>
       </div>
     <input type="submit" class="waves-effect waves-light btn" value="button">
