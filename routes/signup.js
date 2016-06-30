@@ -10,7 +10,8 @@ const USERS = function() {
 };
 
 router.get('/', function(req, res){
-  res.render('signup');
+  console.log(req.session.passport.user);
+  res.render('signup',{user:req.session.passport.user});
 });
 
 router.post('/', function(req, res){
