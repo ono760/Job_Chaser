@@ -34,7 +34,6 @@ app.set('views', path.join(__dirname, 'views'));
 console.log(__dirname);
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, '/public/images/favicomatic/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -79,7 +78,8 @@ passport.use(new LinkedInStrategy({
 
 
 app.use(function (req, res, next) {
-  if (req.session.passport) res.locals.user = req.session.passport.user || null;
+  if (req.session.passport) app.locals.user = req.session.passport.user || null;
+  else app.locals.user = null;
   next()
 });
 

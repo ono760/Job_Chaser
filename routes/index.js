@@ -6,13 +6,9 @@ var knex = require("../db/knex");
 var bcrypt = require("bcrypt");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    console.log(req.session.user,'hi');
-    console.log(req.session.passport,'bye');
-    
+router.get('/', function(req, res, next) {  
   res.render('index', { title: 'Job Search', 
                         currentQuery: {},
-                        user:null,
                         jobs: null,
                         page: null,
                         totalPages:null
