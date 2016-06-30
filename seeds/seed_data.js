@@ -69,37 +69,37 @@ return Promise.all([
         .then(function () {
             return Promise.all([
                 knex('user_jobs').insert({user_id:1, job_id:1}),
-                knex('user_jobs').insert({user_id:2, job_id:2}),
-                knex('user_jobs').insert({user_id:3, job_id:3}),
-                knex('user_jobs').insert({user_id:2, job_id:21}),
-                knex('user_jobs').insert({user_id:3, job_id:6}),
+                knex('user_jobs').insert({user_id:3, job_id:2}),
+                knex('user_jobs').insert({user_id:2, job_id:3}),
+                knex('user_jobs').insert({user_id:3, job_id:21}),
+                knex('user_jobs').insert({user_id:2, job_id:6}),
                 knex('user_jobs').insert({user_id:1, job_id:5}),
                 knex('user_jobs').insert({user_id:2, job_id:7}),
                 knex('user_jobs').insert({user_id:2, job_id:9}),
                 knex('user_jobs').insert({user_id:3, job_id:4}),
                 knex('user_jobs').insert({user_id:1, job_id:8}),
                 knex('user_jobs').insert({user_id:2, job_id:10}),
-                knex('user_jobs').insert({user_id:3, job_id:11}),
-                knex('user_jobs').insert({user_id:2, job_id:12}),
+                knex('user_jobs').insert({user_id:2, job_id:11}),
+                knex('user_jobs').insert({user_id:3, job_id:12}),
                 knex('user_jobs').insert({user_id:1, job_id:12})
 
             ]);
         })
         .then(function () {
             return Promise.all([
-                knex('user_job_stages').insert({user_id:2, user_job_id:1, stage:'phone-screen', notes:'calls from blocked number', question:'asked about binary search, fizz buzz, proudest project'}),
-                knex('user_job_stages').insert({user_id:1, user_job_id:2, stage:'first round', notes:'may make you code in word doc', question:'asked about java instead of javascript, RESTful API, UX/UI'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:3, stage:'on-site', notes:'interview with lead engineer', question:'OOP vs functional programming, fizz buzz, jQuery fundamentals'}),
-                knex('user_job_stages').insert({user_id:2, user_job_id:4, stage:'on-site', notes:'interview with engineer II', question:'Any c++ experience?, why I am i interested in programming, bunch of toy javascript problems'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:5, stage:'in-person', notes:'interview with recruiter', question:'Years of programming experience?, where I see my career in 5 years, what other languages I want to learn'}),
+                knex('user_job_stages').insert({user_id:1, user_job_id:1, stage:'phone-screen', notes:'calls from blocked number', question:'asked about binary search, fizz buzz, proudest project'}),
+                knex('user_job_stages').insert({user_id:3, user_job_id:2, stage:'first round', notes:'may make you code in word doc', question:'asked about java instead of javascript, RESTful API, UX/UI'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:3, stage:'on-site', notes:'interview with lead engineer', question:'OOP vs functional programming, fizz buzz, jQuery fundamentals'}),
+                knex('user_job_stages').insert({user_id:3, user_job_id:4, stage:'on-site', notes:'interview with engineer II', question:'Any c++ experience?, why I am i interested in programming, bunch of toy javascript problems'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:5, stage:'in-person', notes:'interview with recruiter', question:'Years of programming experience?, where I see my career in 5 years, what other languages I want to learn'}),
                 knex('user_job_stages').insert({user_id:1, user_job_id:6, stage:'phone-screen round 1', notes:'interview senior recruiter', question:'worst coding error?, bunch of toy javascript problems, what salary am I looking for'}),
                 knex('user_job_stages').insert({user_id:2, user_job_id:7, stage:'skype screen', notes:'interview with lead engineer from developer team', question:'bunch of toy javascript problems, what CSS frameworks do I know well, the Stack vs the Heap'}),
                 knex('user_job_stages').insert({user_id:2, user_job_id:8, stage:'phone interview', notes:'interview with sr. software developer', question:'how would you rate your programming skills?, asked about binary search, OOP vs Functional programming'}),
                 knex('user_job_stages').insert({user_id:3, user_job_id:9, stage:'on-site', notes:'interview with HR', question:'fizz buzz, how to make a booklist, years of programming experience?'}),
                 knex('user_job_stages').insert({user_id:1, user_job_id:10, stage:'on-site', notes:'met with sr. recruiter', question:'why am I interested in programming, where did I go to school, any experience with Python'}),
                 knex('user_job_stages').insert({user_id:2, user_job_id:11, stage:'skype', notes:'interview with CEO', question:'any experience with Ruby on Rails, RESTful API and CRUD, Node and Express modules'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:12, stage:'in person', notes:'interview with android engineer', question:'tabs vs spaces, will the real slim shady please stand up?, proudest project'}),
-                knex('user_job_stages').insert({user_id:2, user_job_id:13, stage:'skype second round', notes:'interview with lead engineer III', question:'chicken or fish, coke or pepsi, red or white wine'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:12, stage:'in person', notes:'interview with android engineer', question:'tabs vs spaces, will the real slim shady please stand up?, proudest project'}),
+                knex('user_job_stages').insert({user_id:3, user_job_id:13, stage:'skype second round', notes:'interview with lead engineer III', question:'chicken or fish, coke or pepsi, red or white wine'}),
                 knex('user_job_stages').insert({user_id:1, user_job_id:14, stage:'phone screen round 3', notes:'interview with HR manager', question:'where do I see myself in 10 years, what other languages I want to learn, bunch of toy javascript problems'})
             ]);
         })
