@@ -24,6 +24,7 @@ var auth = require('./routes/auth');
 var jobs = require('./routes/jobs');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
+var logout = require('./routes/logout');
 
 
 
@@ -39,7 +40,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cookieParser());
+app.use(cookieParser('hi'));
 app.use(cookieSession({
   name: 'session',
   keys: [
@@ -88,6 +89,7 @@ app.use('/users', users);
 app.use('/jobs', jobs);
 app.use('/login', login);
 app.use('/signup', signup);
+app.use('/logout',logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

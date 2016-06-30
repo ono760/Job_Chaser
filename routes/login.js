@@ -6,6 +6,7 @@ var knex = require("../db/knex");
 var bcrypt = require("bcrypt");
 
 router.get('/', function(req, res){
+  console.log('Cookies : ',req.cookies);
   if (req.session.id){
     res.redirect(`/user/${req.session.id}`);
   } else {
@@ -13,10 +14,10 @@ router.get('/', function(req, res){
   }
 });
 
-router.post('/', function(req, res){
+router.post('/login', function(req, res){
   knex('users').where('email', req.body.email).then(function(user){
     if(user) {
-      if(bcrypt.compareSync(req.body.password, user[0].password)){
+      if(bcrypt.compareSync(req.body.password, user.password)){
         req.session.id = user[0].id;
         res.redirect(`/user/${user[0].id}`);
       } else {

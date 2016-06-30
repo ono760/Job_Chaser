@@ -8,13 +8,14 @@ router.get('/linkedin',
   });
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', {
-    successRedirect: '/',
+    successRedirect: '/jobs',
     failureRedirect: '/login'
 }));
 
 router.get('/logout', function(req, res){
     // req.logout();
-    // req.clearCookie();
+    //res.clearCookie();
+
     req.session = null;
     res.redirect('/');
 });
