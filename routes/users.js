@@ -9,37 +9,37 @@ var bcrypt = require("bcrypt");
 
 router.get('/:id', function(req, res, next) {
   let id = req.params.id;
-  
-})
+
+});
 
 // companies for users jobs and all the reviews for companies
-// router.get('/:id', function(req, res, next) {
-//   let id = req.params.id;
-//   knex('users').select().where('users.id', '=', id).then(function(user) {
-//     knex('user_jobs').select('companies.id as company_id', 'jobs.id as job_id', 'jobs.position', 'companies.name', 'companies.location').distinct('user_jobs.id')
-//     .innerJoin('jobs', 'user_jobs.job_id', 'jobs.id')
-//     .leftJoin('companies', 'jobs.company_id', 'companies.id')
-//     .where('user_jobs.user_id', "=", id)
-//     // .andWhere('companies.id', "=", '1')
-//     .then(function(companies) {
-//       let companyIds = companies.map(function(company) {
-//         return company.company_id;
-//       });
-//       // console.log(companyIds)
-//       knex('reviews').select().whereIn('reviews.company_id', companyIds).then(function(reviews) {
-//         // let reviewsCo =
-//         console.log(companies)
-//         console.log(reviews)
-//         companies.forEach(function(company){
-//           company.reviews = reviews.filter(function(review){
-//             return review.company_id == company.company_id;
-//           });
-//         });
-//         res.json(companies);
-//       });
-//     });
-//   });
-// });
+router.get('/:id', function(req, res, next) {
+  let id = req.params.id;
+  knex('users').select().where('users.id', '=', id).then(function(user) {
+    knex('user_jobs').select('companies.id as company_id', 'jobs.id as job_id', 'jobs.position', 'companies.name', 'companies.location').distinct('user_jobs.id')
+    .innerJoin('jobs', 'user_jobs.job_id', 'jobs.id')
+    .leftJoin('companies', 'jobs.company_id', 'companies.id')
+    .where('user_jobs.user_id', "=", id)
+    // .andWhere('companies.id', "=", '1')
+    .then(function(companies) {
+      let companyIds = companies.map(function(company) {
+        return company.company_id;
+      });
+      // console.log(companyIds)
+      knex('reviews').select().whereIn('reviews.company_id', companyIds).then(function(reviews) {
+        // let reviewsCo =
+        console.log(companies);
+        console.log(reviews);
+        companies.forEach(function(company){
+          company.reviews = reviews.filter(function(review){
+            return review.company_id == company.company_id;
+          });
+        });
+        res.json(companies);
+      });
+    });
+  });
+});
 
 // gets user info, list of jobs, and associated info (status, notes, position, salary, company, and interview stage/notes)
 // router.get('/:id', function(req, res, next) {

@@ -4,22 +4,22 @@ return Promise.all([
         knex('reviews').del()
     ])
         .then(function () {
-            knex('interview_questions').del()
+            knex('interview_questions').del();
         })
         .then(function () {
-            knex('user_job_stages').del()
+            knex('user_job_stages').del();
         })
         .then(function () {
-            knex('user_jobs').del()
+            knex('user_jobs').del();
         })
         .then(function () {
-            knex('jobs').del()
+            knex('jobs').del();
         })
         .then(function () {
-            knex('companies').del()
+            knex('companies').del();
         })
         .then(function () {
-            knex('users').del()
+            knex('users').del();
 
         })
 ])
@@ -87,37 +87,40 @@ return Promise.all([
         })
         .then(function () {
             return Promise.all([
-                knex('user_job_stages').insert({user_id:1, user_job_id:1, stage:'phone-screen', notes:'calls from blocked number'}),
-                knex('user_job_stages').insert({user_id:2, user_job_id:2, stage:'first round', notes:'may make you code in word doc'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:3, stage:'on-site', notes:'interview with lead engineer'}),
-                knex('user_job_stages').insert({user_id:2, user_job_id:2, stage:'on-site', notes:'interview with engineer II'}),
-                knex('user_job_stages').insert({user_id:1, user_job_id:1, stage:'in-person', notes:'interview with recruiter'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:3, stage:'phone-screen round 1', notes:'interview senior recruiter'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:3, stage:'skype screen', notes:'interview with lead engineer from developer team'}),
-                knex('user_job_stages').insert({user_id:1, user_job_id:1, stage:'phone interview', notes:'interview with sr. software developer'}),
-                knex('user_job_stages').insert({user_id:2, user_job_id:2, stage:'on-site', notes:'interview with HR'}),
-                knex('user_job_stages').insert({user_id:2, user_job_id:2, stage:'on-site', notes:'met with sr. recruiter'}),
-                knex('user_job_stages').insert({user_id:1, user_job_id:1, stage:'skype', notes:'interview with CEO'}),
-                knex('user_job_stages').insert({user_id:1, user_job_id:1, stage:'in person', notes:'interview with android engineer'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:3, stage:'skype second round', notes:'interview with lead engineer III'}),
-                knex('user_job_stages').insert({user_id:2, user_job_id:2, stage:'phone screen round 3', notes:'interview with HR manager'}),
-                knex('user_job_stages').insert({user_id:1, user_job_id:1, stage:'skype', notes:'interview with Sr. recruiter'}),
-                knex('user_job_stages').insert({user_id:3, user_job_id:3, stage:'on-site', notes:'interview with sales team manager'})
+                knex('user_job_stages').insert({user_id:2, user_job_id:1, stage:'phone-screen', notes:'calls from blocked number', question:'asked about binary search, fizz buzz, proudest project'}),
+                knex('user_job_stages').insert({user_id:1, user_job_id:2, stage:'first round', notes:'may make you code in word doc', question:'asked about java instead of javascript, RESTful API, UX/UI'}),
+                knex('user_job_stages').insert({user_id:3, user_job_id:3, stage:'on-site', notes:'interview with lead engineer', question:'OOP vs functional programming, fizz buzz, jQuery fundamentals'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:4, stage:'on-site', notes:'interview with engineer II', question:'Any c++ experience?, why I am i interested in programming, bunch of toy javascript problems'}),
+                knex('user_job_stages').insert({user_id:3, user_job_id:5, stage:'in-person', notes:'interview with recruiter', question:'Years of programming experience?, where I see my career in 5 years, what other languages I want to learn'}),
+                knex('user_job_stages').insert({user_id:1, user_job_id:6, stage:'phone-screen round 1', notes:'interview senior recruiter', question:'worst coding error?, bunch of toy javascript problems, what salary am I looking for'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:7, stage:'skype screen', notes:'interview with lead engineer from developer team', question:'bunch of toy javascript problems, what CSS frameworks do I know well, the Stack vs the Heap'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:8, stage:'phone interview', notes:'interview with sr. software developer', question:'how would you rate your programming skills?, asked about binary search, OOP vs Functional programming'}),
+                knex('user_job_stages').insert({user_id:3, user_job_id:9, stage:'on-site', notes:'interview with HR', question:'fizz buzz, how to make a booklist, years of programming experience?'}),
+                knex('user_job_stages').insert({user_id:1, user_job_id:10, stage:'on-site', notes:'met with sr. recruiter', question:'why am I interested in programming, where did I go to school, any experience with Python'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:11, stage:'skype', notes:'interview with CEO', question:'any experience with Ruby on Rails, RESTful API and CRUD, Node and Express modules'}),
+                knex('user_job_stages').insert({user_id:3, user_job_id:12, stage:'in person', notes:'interview with android engineer', question:'tabs vs spaces, will the real slim shady please stand up?, proudest project'}),
+                knex('user_job_stages').insert({user_id:2, user_job_id:13, stage:'skype second round', notes:'interview with lead engineer III', question:'chicken or fish, coke or pepsi, red or white wine'}),
+                knex('user_job_stages').insert({user_id:1, user_job_id:14, stage:'phone screen round 3', notes:'interview with HR manager', question:'where do I see myself in 10 years, what other languages I want to learn, bunch of toy javascript problems'})
             ]);
         })
-        .then(function () {
-            return Promise.all([
-                knex('interview_questions').insert({user_id:1, user_job_id:1, user_job_stage_id:1, question:'asked about binary search'}),
-                knex('interview_questions').insert({user_id:2, user_job_id:2, user_job_stage_id:2, question:'asked about java instead of javascript'}),
-                knex('interview_questions').insert({user_id:3, user_job_id:3, user_job_stage_id:3, question:'need to brush up on object-oriented programming'}),
-                knex('interview_questions').insert({user_id:3, user_job_id:3, user_job_stage_id:4, question:'Any c++ experience?'}),
-                knex('interview_questions').insert({user_id:2, user_job_id:2, user_job_stage_id:8, question:'Years of programming experience?'}),
-                knex('interview_questions').insert({user_id:2, user_job_id:2, user_job_stage_id:9, question:'team player?'}),
-                knex('interview_questions').insert({user_id:1, user_job_id:1, user_job_stage_id:6, question:'worst coding error?'}),
-                knex('interview_questions').insert({user_id:3, user_job_id:3, user_job_stage_id:5, question:'impatient or calm person?'}),
-                knex('interview_questions').insert({user_id:1, user_job_id:3, user_job_stage_id:7, question:'how would you rate your programming skills?'})
-            ]);
-        })
+        // .then(function () {
+        //     return Promise.all([
+        //         knex('interview_questions').insert({user_id:1, user_job_id:1, user_job_stage_id:1, question:'asked about binary search, fizz buzz, proudest project'}),
+        //         knex('interview_questions').insert({user_id:2, user_job_id:2, user_job_stage_id:2, question:'asked about java instead of javascript, RESTful API, UX/UI'}),
+        //         knex('interview_questions').insert({user_id:3, user_job_id:3, user_job_stage_id:3, question:'OOP vs functional programming, fizz buzz, jQuery fundamentals'}),
+        //         knex('interview_questions').insert({user_id:3, user_job_id:4, user_job_stage_id:4, question:'Any c++ experience?, why I am i interested in programming, bunch of toy javascript problems'}),
+        //         knex('interview_questions').insert({user_id:2, user_job_id:5, user_job_stage_id:5, question:'Years of programming experience?, where I see my career in 5 years, what other languages I want to learn'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:6, user_job_stage_id:6, question:'worst coding error?, bunch of toy javascript problems, what salary am I looking for'}),
+        //         knex('interview_questions').insert({user_id:3, user_job_id:7, user_job_stage_id:7, question:'bunch of toy javascript problems, what CSS frameworks do I know well, the Stack vs the Heap'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:8, user_job_stage_id:8, question:'how would you rate your programming skills?, asked about binary search, OOP vs Functional programming'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:9, user_job_stage_id:9, question:'fizz buzz, how to make a booklist, years of programming experience?'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:10, user_job_stage_id:10, question:'why am I interested in programming, where did I go to school, any experience with Python'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:11, user_job_stage_id:11, question:'any experience with Ruby on Rails, RESTful API and CRUD, Node and Express modules'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:12, user_job_stage_id:12, question:'tabs vs spaces, will the real slim shady please stand up?, proudest project'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:13, user_job_stage_id:13, question:'chicken or fish, coke or pepsi, red or white wine'}),
+        //         knex('interview_questions').insert({user_id:1, user_job_id:14, user_job_stage_id:14, question:'where do I see myself in 10 years, what other languages I want to learn, bunch of toy javascript problems'})
+        //     ]);
+        // })
         .then(function () {
             return Promise.all([
                 knex('reviews').insert({company_id:1,review_text:'good atmosphere'}),

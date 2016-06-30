@@ -39,17 +39,18 @@ exports.up = function(knex, Promise) {
             table.biginteger('user_job_id',20).references('id').inTable('user_jobs');
             table.string('stage');
             table.string('notes');
-        });
-      }).then(function () {
-
-        return knex.schema.createTable('interview_questions',function (table) {
-            table.increments('id').primary();
-            table.biginteger('user_id',20).references('id').inTable('users');
-            table.biginteger('user_job_id',20).references('id').inTable('user_jobs');
-            table.biginteger('user_job_stage_id',20).references('id').inTable('user_job_stages');
             table.string('question');
         });
       }).then(function () {
+
+      //   return knex.schema.createTable('interview_questions',function (table) {
+      //       table.increments('id').primary();
+      //       table.biginteger('user_id',20).references('id').inTable('users');
+      //       table.biginteger('user_job_id',20).references('id').inTable('user_jobs');
+      //       table.biginteger('user_job_stage_id',20).references('id').inTable('user_job_stages');
+      //       table.string('question');
+      //   });
+      // }).then(function () {
 
         return knex.schema.createTable('reviews',function (table) {
             table.increments('id').primary();
