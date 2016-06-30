@@ -6,7 +6,6 @@ var knex = require("../db/knex");
 var bcrypt = require("bcrypt");
 
 router.get('/', function(req, res){
-  console.log('Cookies : ',req.cookies);
   if (req.session.id){
     res.redirect(`/user/${req.session.id}`);
   } else {

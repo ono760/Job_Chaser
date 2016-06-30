@@ -8,15 +8,12 @@ var bcrypt = require("bcrypt");
 const USERS = function() {
   return knex('users');
 };
-console.log(USERS);
 
 router.get('/', function(req, res){
-  console.log(req.session.passport.user);
-  res.render('signup',{user:req.session.passport.user});
+  res.render('signup');
 });
 
 router.post('/', function(req, res){
-  console.log(req.body.email);
   USERS().where({email:req.body.email})
   .first().then(function(user){
     if(!user) {
