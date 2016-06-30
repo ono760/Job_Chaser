@@ -24,6 +24,10 @@ router.post('/', function(req, res){
     if (userInfo && bcrypt.compareSync(req.body.password, userInfo.password)) {
       console.log(userInfo);
       console.log(userInfo.id);
+      console.log(userInfo.first_name)
+      req.session.user = {
+        displayName:userInfo.first_name
+      }
       res.redirect('/about');
     }
     else {

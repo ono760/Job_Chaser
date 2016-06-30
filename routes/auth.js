@@ -13,7 +13,6 @@ router.get('/linkedin/callback', passport.authenticate('linkedin', {
 }));
 
 
-
 router.get('/logout', function(req, res){
     req.logout();
     res.clearCookie();
