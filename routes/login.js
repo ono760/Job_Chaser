@@ -10,11 +10,11 @@ router.get('/', function(req, res){
   if (req.session.id){
     res.redirect(`/user/${req.session.id}`);
   } else {
-    res.render('login');
+    res.render('login', {user:req.session.user || null});
   }
 });
 
-router.post('/login', function(req, res){
+router.post('/', function(req, res){
   knex('users').where('email', req.body.email).then(function(user){
     if(user) {
       if(bcrypt.compareSync(req.body.password, user.password)){

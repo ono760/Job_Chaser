@@ -24,10 +24,9 @@ var auth = require('./routes/auth');
 var jobs = require('./routes/jobs');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
-var logout = require('./routes/logout');
+
 var tempUsers = require('./routes/tempUsers');
-
-
+var about = require('./routes/about');
 
 
 // view engine setup
@@ -86,12 +85,13 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/auth', auth);
+app.use('/login', login);
+
 app.use('/users', users);
 app.use('/jobs', jobs);
-app.use('/login', login);
 app.use('/signup', signup);
-app.use('/logout',logout);
 app.use('/tempUsers', tempUsers);
+app.use('/about', about);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
