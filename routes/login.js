@@ -9,7 +9,10 @@ const USERS = function() {
   return knex('users');
 };
 
-
+router.use(function(req, res, next) {
+  res.locals.err = null;
+  next();
+});
 
 router.get('/', function(req, res){
   if (req.session.id){
@@ -31,7 +34,8 @@ router.post('/', function(req, res){
       res.redirect('/about');
     }
     else {
-      res.render('login');
+
+      res.render('login', {err:true});
     }
   })
 });
