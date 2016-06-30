@@ -58,7 +58,7 @@ saveUninitialized: true }));
 
 passport.serializeUser(function(user, done) {
     //later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
-    done(null, user);
+  done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
@@ -102,6 +102,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    throw err;
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -113,10 +114,11 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+  throw err;
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: err
   });
 });
 
