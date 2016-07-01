@@ -46,10 +46,12 @@
             </div>
     </div>
     <container>
-
+     <% if(err){ %>
+                      <p id='invalid-pass'>Email already exists please login</p>
+                      <% } %>
         <div class = 'row'>
         <div class = 'col s6 offset-s5'>
-            <button class="btn waves-effect waves-light" type="submit">Submit
+            <button id="signup-submit-button" class="btn waves-effect waves-light" type="submit">Submit
                 <i class="material-icons right">send</i>
             </button>
         </div>
@@ -58,5 +60,6 @@
     </container>
 
 </container>
+</div>
 </body>
 </html>
