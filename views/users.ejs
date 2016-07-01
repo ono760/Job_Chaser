@@ -82,6 +82,7 @@
           </form>
           <br>
           <form method="POST" action="/users/del/:id">
+            <input type = "hidden" name="user_id" value="<%= user.id %>">
             <input type = "hidden" name="jobs_id" value="<%= job.jobs_id %>">
             <input type="submit" class="waves-effect waves-light btn user-modal" value="Remove from List">
           </form>

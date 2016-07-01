@@ -14,7 +14,7 @@ var expressSession = require('express-session');
 var knex = require('./db/knex');
 
 //passport
-var passport = require('passport')
+var passport = require('passport');
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 require('dotenv').load();
 
@@ -59,21 +59,8 @@ saveUninitialized: true }));
 
 passport.serializeUser(function(user, done) {
     //later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
-    // knex('users').where({linkedin_id:body.passport.id}).first().then(function() {
-    // if (linkedin_id != body.passport.id) {
-    //  knex('users').insert({
-    //     linkedin_id:req.body.passport.id
-    //   })
-    //  .then(function(){
-    //     res.redirect('/');
-    //  });     
-    // }
-    // else {
-    //   res.render('login', {err:true});
-    // }
   done(null, user);
-
-})
+});
 // });
 
 passport.deserializeUser(function(obj, done) {
