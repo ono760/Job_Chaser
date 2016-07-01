@@ -31,7 +31,7 @@ router.post('/', function(req, res){
       req.session.user = {
         displayName:userInfo.first_name
       }
-      res.redirect('/about');
+      res.redirect('/');
     }
     else {
 
