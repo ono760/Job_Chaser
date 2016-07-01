@@ -43,19 +43,25 @@
           <strong>Link to application</strong> - <a href="<%= job.link_to_application %>">Click Here</a><br>
           <strong>Company Reviews - </strong><br>
           <% job.company.reviews.forEach(function(review) { %>
-              <%= review.review_text %><br>
+              - <%= review.review_text %><br>
           <% }) %>
           <br><strong>Application Stage</strong><br>
           <% job.stages.forEach(function(stage){ %>
-            <%= stage.stage %><br>
+            <% if(stage.stage){ %>
+              - <%= stage.stage %><br>
+            <% } %>
           <% }) %>
           <strong>Notes</strong><br>
           <% job.stages.forEach(function(stage){ %>
-            <%= stage.notes %><br>
+            <% if(stage.notes){ %>
+            - <%= stage.notes %><br>
+            <% } %>
           <% }) %>
           <strong>Questions</strong><br>
           <% job.stages.forEach(function(stage){ %>
-            <%= stage.question %><br>
+            <% if(stage.question){ %>
+              - <%= stage.question %><br>
+            <% } %>
           <% }) %>
           </p>
           <form method="POST" action="/users/<%= id %>">
