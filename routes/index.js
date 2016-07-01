@@ -7,12 +7,14 @@ var bcrypt = require("bcrypt");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    let userID =req.session.user.id;
   res.render('index', { title: 'Job Search',
                         currentQuery: {},
                         jobs: null,
                         page: null,
                         totalPages:null,
-                        totalResults:null
+                        totalResults:null,
+                        userID:userID || null
                       });
 });
 
