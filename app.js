@@ -11,6 +11,7 @@ var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var request = require('request');
 var expressSession = require('express-session');
+var knex = require('./db/knex');
 
 //passport
 var passport = require('passport')
@@ -58,8 +59,22 @@ saveUninitialized: true }));
 
 passport.serializeUser(function(user, done) {
     //later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
+    // knex('users').where({linkedin_id:body.passport.id}).first().then(function() {
+    // if (linkedin_id != body.passport.id) {
+    //  knex('users').insert({
+    //     linkedin_id:req.body.passport.id
+    //   })
+    //  .then(function(){
+    //     res.redirect('/');
+    //  });     
+    // }
+    // else {
+    //   res.render('login', {err:true});
+    // }
   done(null, user);
-});
+
+})
+// });
 
 passport.deserializeUser(function(obj, done) {
     //here is where you will go to the database and get the user each time from it's id, after you set up your db
@@ -78,6 +93,9 @@ passport.use(new LinkedInStrategy({
 
 
 app.use(function (req, res, next) {
+
+  // console.log(req.session.passport.user);
+
   if (req.session.passport) app.locals.user = req.session.passport.user || null;
   else if(req.session.user) app.locals.user = req.session.user ||null;
   else app.locals.user = null;

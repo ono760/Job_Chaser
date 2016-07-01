@@ -2,29 +2,66 @@
 <html>
 <head>
     <title></title>
+    <link rel="icon" type="image/png" href="/images/favicomatic/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicomatic/favicon-16x16.png" sizes="16x16">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet" type="text/css">
+
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/password-verification.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=
+AIzaSyAa5PDmojI8YQQyWdpqhP34vxxDOkwnrkM&callback=initMap">
+    </script>
+    <script>
+
+        // The following example creates a marker in Stockholm, Sweden using a DROP
+        // animation. Clicking on the marker will toggle the animation between a BOUNCE
+        // animation and no animation.
+
+        var marker;
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: {lat: 59.325, lng: 18.070}
+            });
+
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: {lat: 59.327, lng: 18.067}
+            });
+            marker.addListener('click', toggleBounce);
+        }
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+    </script>
 </head>
-<link rel="icon" type="image/png" href="/images/favicomatic/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/images/favicomatic/favicon-16x16.png" sizes="16x16">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet" type="text/css">
-<script src="/scripts/script.js"></script>
-<script src="/scripts/password-verification.js"></script>
-<link rel="stylesheet" href="/stylesheets/style.css">
+
 <body>
 <div class="container">
 
 <nav>
     <div class="nav-wrapper">
-
     <a href="/" class="brand-logo center">Job Chaser</a>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="/about">About</a></li>
             <% if (user) { %>
                 <li>Hello <%= user.displayName %> <a href="/auth/logout">Logout</a></li>
+                <a href="/users/<%= userID %>">My Job List</a>
             <% } else { %>
                 <li><a href="/login">Login</a></li>
                 <li class="active"><a href="/signup">Sign up</a></li>
@@ -33,7 +70,8 @@
         <ul class="side-nav" id="mobile-demo">
             <li><a href="/about">About</a></li>
             <% if (user) { %>
-                <li>Hello <%= user.displayName %> <a href="/auth/logout">Logout</a></li>
+                <li id="welcomeuser">Hello <%= user.displayName %> <a id="logoutuser" href="/auth/logout">Logout</a></li>
+                <a href="/users/:id">My Job List</a>
             <% } else { %>
                 <li><a href="/login">Login</a></li>
                 <li class="active"><a href="/signup">Sign up</a></li>

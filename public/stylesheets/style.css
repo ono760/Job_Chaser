@@ -77,3 +77,16 @@
     position: relative;
     left:110px;
 }
+
+@media(max-width:993px) {
+    #welcomeuser {
+        color:black;
+        position: relative;
+        left:25px;
+    }
+
+    #logoutuser{
+        position:relative;
+        right:30px;
+    }
+}

@@ -33,7 +33,7 @@ router.post('/', function(req, res){
         displayName:userInfo.first_name,
         id: userInfo.id
       };
-      res.redirect('/about');
+      res.redirect('/');
     }
     else {
 
