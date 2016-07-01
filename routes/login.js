@@ -29,7 +29,8 @@ router.post('/', function(req, res){
       console.log(userInfo.id);
       console.log(userInfo.first_name)
       req.session.user = {
-        displayName:userInfo.first_name
+        displayName:userInfo.first_name,
+        id: userInfo.id
       }
       res.redirect('/about');
     }
