@@ -50,8 +50,8 @@ router.get('/:id', function(req, res, next) {
             });
             // assemble into mega
             user[0].jobs = jobs;
-            console.log(user[0].jobs);
-            res.render('users', {id:req.params.id, jobs:user[0].jobs});
+            console.log(user[0]);
+            res.render('users', {id:req.params.id, jobs:user[0].jobs, user:user[0]});
           });
         });
       });
@@ -60,12 +60,12 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/:id', function(req, res, next){
+  console.log(req.body)
   let review = req.body.reviews;
   let questions = req.body.questions;
   let stage = req.body.stage;
   let notes = req.body.notes;
   let id = req.param.id;
-  console.log(questions);
   if (questions){
     knex('')
   }
