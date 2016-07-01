@@ -14,10 +14,16 @@
 <script src="/scripts/password-verification.js"></script>
 <link rel="stylesheet" href="/stylesheets/style.css">
 <body>
+<div class="container">
+
 <nav>
-    <div class="nav-wrapper"><a href="/" class="brand-logo center">Job Chaser</a>
+    <div class="nav-wrapper">
+
+    <a href="/" class="brand-logo center">Job Chaser</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="/about">About</a></li>
+
             <% if (user) { %>
                 <li>Hello <%= user.displayName %> <a href="/auth/logout">Logout</a></li>
             <% } else { %>
@@ -25,6 +31,17 @@
                 <li class="active"><a href="/signup">Sign up</a></li>
             <% } %>
         </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/about">About</a></li>
+            <% if (user) { %>
+                <li>Hello <%= user.displayName %> <a href="/auth/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li class="active"><a href="/signup">Sign up</a></li>
+            <% } %>
+
+        </ul>
+
     </div>
 </nav>
 
