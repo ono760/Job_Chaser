@@ -32,7 +32,11 @@
                 </div>
                 <div class="modal-footer">
                   <a href="<%= job.url %>" class=" modal-action modal-close waves-effect waves-green btn-flat">Apply Now</a>
-                  <a href="/tempUsers" class=" modal-action modal-close waves-effect waves-green btn-flat">Add to my job list</a>
+                          <% if (user) { %>
+                            <a href="/tempUsers" class=" modal-action modal-close waves-effect waves-green btn-flat">Add to my job list</a>
+                        <% } else { %>
+              <a href="/signup" class=" modal-action modal-close waves-effect waves-green btn-flat">Sign up to add job to your list</a>
+            <% } %>
                 </div>
               </div>
               <%= job.company %> - <%= job.city %>, <%= job.state %><br>
