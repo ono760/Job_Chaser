@@ -7,7 +7,7 @@ var bcrypt = require("bcrypt");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    let userID =req.session.user.id;
+  let userID =req.session.user;
   res.render('index', { title: 'Job Search',
                         currentQuery: {},
                         jobs: null,
