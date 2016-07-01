@@ -25,21 +25,21 @@ exports.up = function(knex, Promise) {
             table.increments('id').primary();
             table.string('position');
             table.string('link_to_application');
-            table.biginteger('company_id',20).references('id').inTable('companies');
+            table.biginteger('company_id',20).references('id').inTable('companies').onDelete('cascade');
         });
       }).then(function(){
 
         return knex.schema.createTable('user_jobs',function (table) {
             table.increments('id').primary();
-            table.biginteger('user_id',20).references('id').inTable('users');
-            table.biginteger('job_id',20).references('id').inTable('jobs');
+            table.biginteger('user_id',20).references('id').inTable('users').onDelete('cascade');
+            table.biginteger('job_id',20).references('id').inTable('jobs').onDelete('cascade');
         });
       }).then(function () {
 
         return knex.schema.createTable('user_job_stages',function (table) {
             table.increments('id').primary();
-            table.biginteger('user_id',20).references('id').inTable('users');
-            table.biginteger('user_job_id',20).references('id').inTable('user_jobs');
+            table.biginteger('user_id',20).references('id').inTable('users').onDelete('cascade');
+            table.biginteger('user_job_id',20).references('id').inTable('user_jobs').onDelete('cascade');
             table.string('stage');
             table.string('notes');
             table.string('question');
@@ -57,7 +57,7 @@ exports.up = function(knex, Promise) {
 
         return knex.schema.createTable('reviews',function (table) {
             table.increments('id').primary();
-            table.biginteger('company_id',20).references('id').inTable('companies');
+            table.biginteger('company_id',20).references('id').inTable('companies').onDelete('cascade');
             table.string('review_text');
         });
       });

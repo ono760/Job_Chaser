@@ -33,7 +33,7 @@ router.get('/', function(req, res){
       // res.render('signup', {err:false})
       res.render('signup', {err:true});
     }
-  })
+  });
   // .catch(function(err) {
   //   res.send("Error signing up " + err);
   // });

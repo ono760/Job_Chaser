@@ -13,6 +13,9 @@
             <div class="row">
               <div class="input-field col s6 offset-s3 col m4 offset-m4 col l4 offset-l4"><i class="material-icons prefix">location_on</i><input id="icon_prefix" type="text" name="location" class="validate"><label for="icon_prefix">Location</label>
                 <div class="row">
+                  <% if (parseInt(totalResults)===0){ %>
+                    <p>No results found</p>
+                  <% } %>
                   <div class="col l2 offset-l5 col s6 offset-s3"><button type="submit" name="action" id="submit-button" class="btn waves-effect waves-light">Submit<i class="material-icons right">send</i></button></div>
                 </div>
               </div>
@@ -23,12 +26,16 @@
           <% jobs.forEach(function(job, index){ %>
             <li class="job-li">
               <!-- Modal Trigger -->
-              <a class="waves-effect waves-light modal-trigger" href="#modal<%= index %>"><strong><%= job.jobtitle %></strong></a><br>
+              <a class="waves-effect waves-light modal-trigger" href="#modal<%= index %>"><strong><%= job.jobtitle.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %></strong></a><br>
               <!-- Modal Structure -->
               <div id="modal<%= index %>" class="modal">
                 <div class="modal-content">
-                  <h4><%= job.jobtitle %></h4>
-                  <p><%- job.snippet %></p>
+                  <h4><%= job.jobtitle.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %></h4>
+                  <p>
+                    <strong>Company -</strong> <%= job.company.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %><br>
+                    <strong>Location -</strong> <%= job.formattedLocation %><br><br>
+                    <%- job.snippet %>
+                  </p>
                 </div>
                 <div class="modal-footer">
                   <a href="<%= job.url %>" class=" modal-action modal-close waves-effect waves-green btn-flat">Apply Now</a>
@@ -48,7 +55,7 @@
             <% } %>
                 </div>
               </div>
-              <%= job.company %> - <%= job.formattedLocation%><br>
+              <%= job.company.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %> - <%= job.formattedLocation%><br>
               Posted <strong><%= job.formattedRelativeTime %></strong> days ago.<br>
               <a href="<%= job.url %>">Apply Now</a>
             </li>
@@ -57,21 +64,23 @@
           </ul>
         <div class="row">
           <div class="col s2 offset-s3 col m6 offset-m3 col l6 offset-l3 center">
-            <ul class="pagination">
-              <% if (page > 1) { %>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)-1 %>"><i class="material-icons">chevron_left</i></a></li>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=1">1...</a></li>
-              <% } %>
-              <% if (currentQuery.title) { %>
-                <li class="active"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page) %>"><%= parseInt(page) %></a></li>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><%= parseInt(page)+1 %></a></li>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+2 %>"><%= parseInt(page)+2 %></a></li>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+3 %>"><%= parseInt(page)+3 %></a></li>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+4 %>"><%= parseInt(page)+4 %></a></li>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(totalPages) %>">...<%= parseInt(totalPages) %></a></li>
-                <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><i class="material-icons">chevron_right</i></a></li>
-              <% } %>
-            </ul>
+            <% if (parseInt(totalResults) > 0) { %>
+              <ul class="pagination">
+                <% if (page > 1) { %>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)-1 %>"><i class="material-icons">chevron_left</i></a></li>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=1">1...</a></li>
+                <% } %>
+                <% if (currentQuery.title) { %>
+                  <li class="active"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page) %>"><%= parseInt(page) %></a></li>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><%= parseInt(page)+1 %></a></li>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+2 %>"><%= parseInt(page)+2 %></a></li>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+3 %>"><%= parseInt(page)+3 %></a></li>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+4 %>"><%= parseInt(page)+4 %></a></li>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(totalPages) %>">...<%= parseInt(totalPages) %></a></li>
+                  <li class="waves-effect"><a href="/jobs?title=<%= currentQuery.title %>&location=<%= currentQuery.location %>&page=<%= parseInt(page)+1 %>"><i class="material-icons">chevron_right</i></a></li>
+                <% } %>
+              </ul>
+            <% } %>
           </div>
         </div>
         </div>
