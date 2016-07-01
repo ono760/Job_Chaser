@@ -2,30 +2,28 @@
   <%- include('layout', {user: user}); %>
   <div class="row">
     <div class="col s12">
-        <div class="row">
+      <div class="row">
+        <form method="POST" action="/users/addjob/:id>">
           <div class="input-field col s3">
-              <input name="reviews" id="icon_prefix" type="text" class="validate">
-              <input type="submit" class="waves-effect waves-light btn" value="button">
-              <label for="icon_prefix">Reviews</label>
-          </div>
-          <form method="POST" action="/users/<%= id %>">
-          <div class="input-field col s3">
-              <input name="questions" id="icon_telephone" type="tel" class="validate questions">
-              <input type="submit" class="waves-effect waves-light btn" value="button">
-              <label for="icon_telephone">Questions</label>
+              <input name="job_title" id="icon_prefix" type="text" class="validate">
+              <label for="icon_prefix">Position</label>
           </div>
           <div class="input-field col s3">
-              <input name="stage" id="icon_telephone" type="tel" class="validate stage">
-              <input type="submit" class="waves-effect waves-light btn" value="button">
-              <label for="icon_telephone">Stage</label>
+              <input name="job_company" id="icon_telephone" type="tel" class="validate questions">
+              <label for="icon_telephone">Company</label>
           </div>
           <div class="input-field col s3">
-              <input name="notes" id="icon_telephone" type="tel" class="validate notes">
-              <label for="icon_telephone">Notes</label>
-              <input type="submit" class="waves-effect waves-light btn" value="button">
+              <input name="job_url" id="icon_telephone" type="tel" class="validate stage">
+              <label for="icon_telephone">Application URL</label>
           </div>
-      </form>
-    </div>
+          <div class="input-field col s3">
+              <input name="job_location" id="icon_telephone" type="tel" class="validate notes">
+              <label for="icon_telephone">Location</label>
+              <input type = "hidden" name="user_id" value="<%= userID %>">
+              <input type="submit" class="waves-effect waves-light btn" value="Add to My List">
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 <ul>
