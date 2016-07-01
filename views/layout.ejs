@@ -23,7 +23,6 @@
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="/about">About</a></li>
-
             <% if (user) { %>
                 <li>Hello <%= user.displayName %> <a href="/auth/logout">Logout</a></li>
             <% } else { %>
