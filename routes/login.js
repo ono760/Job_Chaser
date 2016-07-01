@@ -27,17 +27,18 @@ router.post('/', function(req, res){
     if (userInfo && bcrypt.compareSync(req.body.password, userInfo.password)) {
       console.log(userInfo);
       console.log(userInfo.id);
-      console.log(userInfo.first_name)
+      console.log(userInfo.first_name);
       req.session.user = {
-        displayName:userInfo.first_name
-      }
-      res.redirect('/');
+        displayName:userInfo.first_name,
+        id: userInfo.id
+      };
+      res.redirect('/about');
     }
     else {
 
       res.render('login', {err:true});
     }
-  })
+  });
 });
 
 
