@@ -13,11 +13,11 @@ router.get('/', function(req, res, next) {
     knex('users').select().where({linkedin_id:passportID}).then(function(user){
       if (user[0] === undefined) {
         knex('users').insert({first_name:passportFirst, last_name:passportLast, linkedin_id:passportID}).returning('id').then(function(id){
-          req.session.passport.user.id = parseInt(id);
+          req.session.passport.id = parseInt(id);
         });
       } else {
         console.log(user)
-        req.session.passport.user.id = parseInt(user[0].id);
+        req.session.passport.id = parseInt(user[0].id);
       }
     });
 

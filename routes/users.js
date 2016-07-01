@@ -9,7 +9,7 @@ var bcrypt = require("bcrypt");
 
 router.post('/addjob/:id', function(req, res, next){
 
-  let userID = req.body.user_id||req.session.passport.user.id;
+  let userID = req.body.user_id||req.session.passport.id;
   let userJobID = req.body.user_job_id;
   //params for adding new job
   let jobTitle = req.body.job_title;
@@ -44,7 +44,7 @@ router.post('/addjob/:id', function(req, res, next){
 });
 
 router.post('/del/:id', function(req, res, next){
-  let userID = req.body.user_id||req.session.passport.user.id;
+  let userID = req.body.user_id||req.session.passport.id;
   let jobID = req.body.jobs_id;
   knex('jobs').del().where('jobs.id', jobID).returning('id').then(function(id){
     console.log('Delete successful');
