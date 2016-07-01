@@ -30,7 +30,7 @@
   <% jobs.forEach(function(job, index) { %>
     <li class="user_jobs_id_<%= job.user_jobs_id %>">
       <!-- Modal Trigger -->
-      <a class="waves-effect waves-light modal-trigger" href="#modal<%= index %>"><strong><%= job.position.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %> at <%= job.name.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %></strong><br></a>
+      <a class="waves-effect waves-light modal-trigger" href="#modal<%= index %>"><strong><%= job.position.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %> at <%= job.name.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %></strong></a>
       <!-- Modal Structure -->
       <div id="modal<%= index %>" class="modal">
         <div class="modal-content">
@@ -62,7 +62,7 @@
             <% } %>
           <% }) %>
           </p>
-          <form method="POST" action="/users/<%= id %>">
+          <form method="POST" action="/users/:id">
             <!-- hidden input to get user_jobs_id -->
             <input type = "hidden" name="user_id" value="<%= user.id %>">
             <input type = "hidden" name="user_job_id" value="<%= job.user_jobs_id %>">
@@ -79,6 +79,11 @@
                 <label for="icon_telephone">Questions</label>
                 <input type="submit" class="waves-effect waves-light btn user-modal" value="Submit">
             </div>
+          </form>
+          <br>
+          <form method="POST" action="/users/del/:id">
+            <input type = "hidden" name="jobs_id" value="<%= job.jobs_id %>">
+            <input type="submit" class="waves-effect waves-light btn user-modal" value="Remove from List">
           </form>
         </div>
         <div class="modal-footer">

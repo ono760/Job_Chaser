@@ -4,7 +4,10 @@ var router = express.Router();
 var request = require('request');
 
 router.get('/', function(req, res, next) {
-    let userID = req.session.user.id;
+    var userID
+    if(req.session.user){
+      userID = req.session.user.id;
+    }
     let title = req.query.title;
     let location = req.query.location;
     let page = req.query.page || 1;
@@ -15,14 +18,12 @@ router.get('/', function(req, res, next) {
         let totalPages = Math.floor((JSON.parse(data.body).totalResults)/10);
         let totalResults = JSON.parse(data.body).totalResults
         console.log(JSON.parse(data.body).start, 'start');
-        console.log(totalResults)
-        // console.log(jobs, 'foo')
         res.render('index', {err:err,
                             jobs:jobs,
                             currentQuery:currentQuery,
                             page:page,
                             totalPages:totalPages,
-                            userID:userID,
+                            userID:userID||null,
                             totalResults:totalResults||null
                           });
     });

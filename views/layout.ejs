@@ -24,7 +24,7 @@
         <ul class="right hide-on-med-and-down">
             <li><a href="/about">About</a></li>
             <% if (user) { %>
-                <li>Hello <%= user.displayName.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %> <a href="/auth/logout">Logout</a></li>
+                <li>Hello <%= user.displayName %> <a href="/auth/logout">Logout</a></li>
             <% } else { %>
                 <li><a href="/login">Login</a></li>
                 <li class="active"><a href="/signup">Sign up</a></li>
@@ -33,7 +33,7 @@
         <ul class="side-nav" id="mobile-demo">
             <li><a href="/about">About</a></li>
             <% if (user) { %>
-                <li>Hello <%= user.displayName.replace(/\b[a-z]/g, function() {return arguments[0].toUpperCase()}) %> <a href="/auth/logout">Logout</a></li>
+                <li>Hello <%= user.displayName %> <a href="/auth/logout">Logout</a></li>
             <% } else { %>
                 <li><a href="/login">Login</a></li>
                 <li class="active"><a href="/signup">Sign up</a></li>

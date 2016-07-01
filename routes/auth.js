@@ -17,12 +17,13 @@ router.get('/logout', function(req, res){
     req.logout();
     res.clearCookie();
     req.session = null;
-    res.render('index', { title: 'Job Search', 
+    res.render('index', { title: 'Job Search',
                         currentQuery: {},
                         user:null,
                         jobs: null,
                         page: null,
-     				            totalPages:null
+     				            totalPages:null,
+                        totalResults:null
                       });
 });
 
