@@ -10,7 +10,7 @@ const USERS = function() {
 };
 
 router.get('/', function(req, res){
-  res.render('signup');
+  res.render('signup',{err:false});
 });
 
 // router.post('/', function(req, res){
@@ -31,7 +31,7 @@ router.get('/', function(req, res){
       });
     } else {
       // res.render('signup', {err:false})
-      res.send("Account Already Exists")
+      res.render('signup', {err:true});
     }
   })
   // .catch(function(err) {

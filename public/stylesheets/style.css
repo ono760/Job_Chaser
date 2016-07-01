@@ -72,3 +72,8 @@
     text-align: center;
     color:red;
 }
+
+#signup-submit-button{
+    position: relative;
+    left:110px;
+}
