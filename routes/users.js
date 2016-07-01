@@ -65,23 +65,16 @@ router.post('/:id', function(req, res, next){
   let questions = req.body.questions;
   let stage = req.body.stage;
   let notes = req.body.notes;
+  let userID = req.body.user_id
+  let userJobID = req.body.user_job_id
   let id = req.param.id;
-  if (questions){
-    knex('')
-  }
-  if (review){
-
-  }
-  if (review){
-
-  }
-  if (review){
-
-  }
-  res.json({
-    "statusCode":200,
-    "results": 'hello world'
-  });
+  if (userID && userJobID){
+    knex('user_job_stages').insert({user_id:userID, user_job_id:userJobID, stage:stage, notes:notes, question:questions}).returning('id')
+    .then(function(id){
+      console.log("Success");
+                  });
+                }
+  res.redirect(`/users/${userID}`);
 });
 
 module.exports = router;
