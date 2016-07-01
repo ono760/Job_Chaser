@@ -9,9 +9,8 @@ var bcrypt = require("bcrypt");
 
 router.post('/addjob/:id', function(req, res, next){
 
-  let userID = req.body.user_id;
+  let userID = req.body.user_id||req.session.passport.id;
   let userJobID = req.body.user_job_id;
-  console.log(req.body, 'userjobidddddd')
   //params for adding new job
   let jobTitle = req.body.job_title;
   let jobCompany = req.body.job_company;
@@ -45,10 +44,8 @@ router.post('/addjob/:id', function(req, res, next){
 });
 
 router.post('/del/:id', function(req, res, next){
-  let userID = req.session.user.id;
+  let userID = req.body.user_id||req.session.passport.id;
   let jobID = req.body.jobs_id;
-  console.log(jobID, userID)
-  console.log('hello')
   knex('jobs').del().where('jobs.id', jobID).returning('id').then(function(id){
     console.log('Delete successful');
     res.redirect(`/users/${userID}`)
@@ -78,7 +75,8 @@ router.post('/:id', function(req, res, next){
 
 // companies for users jobs and all the reviews for companies
 router.get('/:id', function(req, res, next) {
-  let userID = req.session.user.id;
+  let userID = req.params.id;
+  console.log(userID)
   //access reviews for a specific company
   knex('users').select().where('users.id', '=', userID).then(function(user) {
     knex('user_jobs').select('companies.id as company_id', 'companies.name', 'companies.location').distinct('user_jobs.id')
@@ -119,7 +117,6 @@ router.get('/:id', function(req, res, next) {
             });
             // assemble into mega
             user[0].jobs = jobs;
-            console.log(user[0].jobs);
             res.render('users', {id:req.params.id, jobs:user[0].jobs, user:user[0], userID:userID});
           });
         });

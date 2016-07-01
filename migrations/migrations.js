@@ -6,11 +6,11 @@ exports.up = function(knex, Promise) {
           table.increments('id').primary();
           table.string('first_name').notNullable();
           table.string('last_name').notNullable();
-          table.string('email').unique().notNullable();
+          table.string('email').unique();
 
           table.string('linkedin_id').unique(); //added
 
-          table.string('password').notNullable();
+          table.string('password');
           table.biginteger('phone_number',20);
       }),
 

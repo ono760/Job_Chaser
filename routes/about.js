@@ -3,7 +3,11 @@ var router = express.Router();
 var passport = require('passport');
 
 router.get('/', function(req, res){
-  res.render('about');
+  var userID;
+  if(req.session.user){
+    userID = req.session.user.id;
+  }
+  res.render('about', {userID:userID||null});
 });
 
 
