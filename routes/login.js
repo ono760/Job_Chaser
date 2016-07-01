@@ -11,15 +11,15 @@ const USERS = function() {
 
 router.use(function(req, res, next) {
   res.locals.err = null;
-  console.log(req.session, 'session')
   next();
 });
 
 router.get('/', function(req, res){
-  if (req.session.id){
-    res.redirect(`/user/${req.session.id}`);
+  console.log(req.session)
+  if (req.session.user){
+    res.redirect(`/users/${req.session.id}`);
   } else {
-    res.render('login', {user:req.session.user || null});
+    res.render('login', {user:req.session.user || null, userID:null});
   }
 });
 

@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
   if(req.session.user){
     userID = req.session.user.id;
   }
-  console.log(req.session.passport, 'indexjs')
   res.render('index', { title: 'Job Search',
                         currentQuery: {},
                         jobs: null,
