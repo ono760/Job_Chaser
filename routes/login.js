@@ -11,6 +11,7 @@ const USERS = function() {
 
 router.use(function(req, res, next) {
   res.locals.err = null;
+  console.log(req.session, 'session')
   next();
 });
 

@@ -2,8 +2,26 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var pg = require("pg");
+var knex = require("../db/knex");
 
 router.get('/', function(req, res, next) {
+    let displayName = req.session.passport.user.displayName.split(' ');
+    let passportFirst = displayName[0];
+    let passportLast = displayName[1];
+    let passportID = req.session.passport.user.id;
+    knex('users').select().where({linkedin_id:passportID}).then(function(user){
+      if (user) {
+        console.log('exists')
+        req.session.id = user[0].id;
+      } else {
+        knex('users').insert({first_name:passportFirst, last_name:passportLast, linkedin_id:passportID}).returning('id').then(function(id){
+          console.log('new success')
+          req.session.id = id;
+        })
+      }
+    })
+
     var userID
     if(req.session.user){
       userID = req.session.user.id;
