@@ -7,10 +7,62 @@ var bcrypt = require("bcrypt");
 
 /* GET users listing. */
 
+router.post('/addjob/:id', function(req, res, next){
+  let userID = req.body.user_id;
+  let userJobID = req.body.user_job_id;
+  //params for adding new job
+  let jobTitle = req.body.job_title;
+  let jobCompany = req.body.job_company;
+  let jobURL = req.body.job_url;
+  let jobLocation = req.body.job_location;
+  //params for notes, questions, etc.
+  let review = req.body.reviews;
+  let questions = req.body.questions;
+  let stage = req.body.stage;
+  let notes = req.body.notes;
+
+  knex('companies').select().where('name', 'like', `${jobCompany}%`).then(function(company){
+  if(jobCompany){
+    knex('companies').select().where('name', 'like', `asdfasdf%`).then(function(company){
+      if (company[0] === undefined){
+        knex('companies').insert({name:jobCompany, location:jobLocation}).returning('id').then(function(newCompID){
+            knex('jobs').insert({position:jobTitle, link_to_application:jobURL, company_id:newCompID[0]}).returning('id').then(function(newJob){
+              knex('user_jobs').insert({user_id:userID, job_id:newJob[0]}).then(function(hope) {
+                console.log('SUCCCCEESSSS');
+                res.redirect(`/users/${userID}`);
+              });
+            });
+          });
+        }
+      });
+    }
+  });
+});
+
+router.post('/:id', function(req, res, next){
+  let userID = req.body.user_id;
+  let userJobID = req.body.user_job_id;
+  //params for adding new job
+  let jobTitle = req.body.job_title;
+  let jobCompany = req.body.job_company;
+  let jobURL = req.body.job_url;
+  let jobLocation = req.body.job_location;
+  //params for notes, questions, etc.
+  let review = req.body.reviews;
+  let questions = req.body.questions;
+  let stage = req.body.stage;
+  let notes = req.body.notes;
+
+    knex('user_job_stages').insert({user_id:userID, user_job_id:userJobID, stage:stage, notes:notes, question:questions}).returning('id')
+    .then(function(id){
+      console.log("Success");
+        res.redirect(`/users/${userID}`);
+      });
+});
+
 // companies for users jobs and all the reviews for companies
 router.get('/:id', function(req, res, next) {
   let id = req.params.id;
-  // console.log(req.session.user);
   knex('users').select().where('users.id', '=', id).then(function(user) {
     knex('user_jobs').select('companies.id as company_id', 'companies.name', 'companies.location').distinct('user_jobs.id')
     .innerJoin('jobs', 'user_jobs.job_id', 'jobs.id')
@@ -50,31 +102,13 @@ router.get('/:id', function(req, res, next) {
             });
             // assemble into mega
             user[0].jobs = jobs;
-            console.log(user[0]);
+            // console.log(user[0]);
             res.render('users', {id:req.params.id, jobs:user[0].jobs, user:user[0]});
           });
         });
       });
     });
   });
-});
-
-router.post('/:id', function(req, res, next){
-  console.log(req.body)
-  let review = req.body.reviews;
-  let questions = req.body.questions;
-  let stage = req.body.stage;
-  let notes = req.body.notes;
-  let userID = req.body.user_id
-  let userJobID = req.body.user_job_id
-  let id = req.param.id;
-  if (userID && userJobID){
-    knex('user_job_stages').insert({user_id:userID, user_job_id:userJobID, stage:stage, notes:notes, question:questions}).returning('id')
-    .then(function(id){
-      console.log("Success");
-                  });
-                }
-  res.redirect(`/users/${userID}`);
 });
 
 module.exports = router;
