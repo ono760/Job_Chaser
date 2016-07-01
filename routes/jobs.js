@@ -6,20 +6,22 @@ var pg = require("pg");
 var knex = require("../db/knex");
 
 router.get('/', function(req, res, next) {
-    let displayName = req.session.passport.user.displayName.split(' ');
-    let passportFirst = displayName[0];
-    let passportLast = displayName[1];
-    let passportID = req.session.passport.user.id;
-    knex('users').select().where({linkedin_id:passportID}).then(function(user){
-      if (user[0] === undefined) {
-        knex('users').insert({first_name:passportFirst, last_name:passportLast, linkedin_id:passportID}).returning('id').then(function(id){
-          req.session.passport.id = parseInt(id);
+    if(req.session.passport) {
+      let displayName = req.session.passport.user.displayName.split(' ');
+      let passportFirst = displayName[0];
+      let passportLast = displayName[1];
+      let passportID = req.session.passport.user.id;
+        knex('users').select().where({linkedin_id:passportID}).then(function(user){
+          if (user[0] === undefined) {
+            knex('users').insert({first_name:passportFirst, last_name:passportLast, linkedin_id:passportID}).returning('id').then(function(id){
+              req.session.passport.id = parseInt(id);
+            });
+          } else {
+            console.log(user)
+            req.session.passport.id = parseInt(user[0].id);
+          }
         });
-      } else {
-        console.log(user)
-        req.session.passport.id = parseInt(user[0].id);
-      }
-    });
+    }
 
     var userID;
     if(req.session.user){
