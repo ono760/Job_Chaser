@@ -1,5 +1,5 @@
 # Job Chaser
-####Link:  [GitHub](https://q2project.herokuapp.com/)
+####Link:  [Job Chaser: ](https://q2project.herokuapp.com/)
 
 > Who uses it?
 
