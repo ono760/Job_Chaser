@@ -30,7 +30,12 @@ Users can search for jobs via Indeed.com's API, keep a personal list of jobs the
 
 ##Screenshots
 ![alt tag](https://github.com/ono760/Job_Chaser/blob/master/public/images/screenshots/home_no_login.png)
+![alt tag](https://github.com/ono760/Job_Chaser/blob/master/public/images/screenshots/log_in_page.png)
+![alt tag](https://github.com/ono760/Job_Chaser/blob/master/public/images/screenshots/linked_in_oauth.png)
+![alt tag](https://github.com/ono760/Job_Chaser/blob/master/public/images/screenshots/add_to_list.png)
+![alt tag](https://github.com/ono760/Job_Chaser/blob/master/public/images/screenshots/notes_screen.png)
+
 
 
 ####NOTE: 
-The Indeed.com API was temporarily granted for the purpose of this project. API key may be renewed in the near future.
+The Indeed.com API key was temporarily granted for the purpose of this project. API key may be renewed in the near future.
