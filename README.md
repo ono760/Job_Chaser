@@ -1,6 +1,5 @@
-# 2nd quarter project proposal 
-
-## By: Nik, James, Ono
+# Job Chaser
+####Link:  [GitHub](https://q2project.herokuapp.com/)
 
 > Who uses it?
 
