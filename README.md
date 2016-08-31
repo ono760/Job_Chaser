@@ -28,6 +28,8 @@ Users can search for jobs via Indeed.com's API, keep a personal list of jobs the
 | --------------- |
 | INDEED.COM      |
 
+##Screenshots
+![alt tag](https://github.com/ono760/Job_Chaser/blob/master/public/images/screenshots/home_no_login.png)
 
 
 ####NOTE: 
