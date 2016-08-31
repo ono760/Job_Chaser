@@ -1,56 +1,34 @@
 # Job Chaser
 ####Link:  [Job Chaser](https://q2project.herokuapp.com/)
 
-> Who uses it?
+***
 
-People trying to break into the tech industry and experienced professionals
+This full-stack, CRUD application was developed in a team-setting environment with the goal to provide the public with a reliable place to research potential job opportunities and to keep track of their outcomes. 
 
-> What outputs? 
+Users can search for jobs via Indeed.com's API, keep a personal list of jobs they're interested in, and save information related to these jobs (notes, application stage, interview questions). Job Chaser also allows job-seekers to share interview questions, job postings, and provide general tips to other users based on their own experiences.
 
-We have decided to implement indeed.com's api along with glassdoor's in order to provide our users with job postings and job reviews during their career pursuit.
 
-> What input? 
 
-Our ideal client would input various information such as job title, company name, salary desired and location.
-
-| List of Technologies |
+| Technologies Used    |
 | -------------------- |
-| CSS                  |
+| JavaScript		  	|
+| CSS (Foundation)     |
 | HTML                 |
-| SASS                 |
-| JQUERY               |
-| JAVASCRIPT           |
-| NODE.JS              |
-| PSQL                 |
-| SOCKET.IO            |
-| KNEX                 |
-| JADE                 |
+| EJS					|
+| jQuery               |
+| Node.JS              |
 | EXPRESS              |
-| FOUNDATION           |
+| PostgreSQL           |
+| Knex                 |
+| Bcrypt			   |
+| Passport/LinkedIn OAuth2 |
  
 
 | APIs Consumed   |
 | --------------- |
 | INDEED.COM      |
-| GLASSDOOR.COM   |
-| LINKEDIN.COM    |
-| MAPS.GOOGLE.COM |
 
 
-| Features                                                                    |
-| --------------------------------------------------------------------------- |
-| Job Applications Lists                                                      |
-| Salary Information                                                          |
-| Interview Questions                                                         |
-| Application Status Notes                                                    |
-| Connections at a particular company                                         |
-| Location                                                                    |
-| Company Information(# of employees,website,star rating,summary of company)  |
-| Sharing with friends                                                        |
-| Personalized features for members                                           |
-| Reviews                                                                     |
 
-## Goals
-
-Our goal is to provide our clients with a place to research potential job opportunities and to record and keep track of possible outcomes.
-We would like a user to be able to compare with others in order to land jobs. Comparing interview questions and mutual connections can be crucial with getting an offer.
+####NOTE: 
+The Indeed.com API was temporarily granted for the purpose of this project. API key may be renewed in the near future.

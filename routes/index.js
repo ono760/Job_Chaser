@@ -17,8 +17,8 @@ router.get('/', function(req, res, next) {
                         page: null,
                         totalPages:null,
                         totalResults:null,
-                        userID:userID||null
-                      });
+                        userID: userID || null
+        });
 });
 
 module.exports = router;

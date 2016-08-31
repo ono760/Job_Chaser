@@ -52,4 +52,4 @@ node_modules/
 .DS_Store
 **-compiled.js
 **.map
-
+.DS_Store

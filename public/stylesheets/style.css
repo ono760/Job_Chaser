@@ -68,29 +68,28 @@
     font-weight: 400;
 }
 
-#invalid-pass{
+#invalid-pass {
     text-align: center;
-    color:red;
+    color: red;
 }
 
-#signup-submit-button{
+#signup-submit-button {
     position: relative;
-    left:110px;
+    left: 110px;
 }
 
 @media(max-width:993px) {
     #welcomeuser {
-        color:black;
+        color: black;
         position: relative;
-        left:25px;
+        left: 25px;
     }
-
-    #logoutuser{
-        position:relative;
-        right:30px;
+    #logoutuser {
+        position: relative;
+        right: 30px;
     }
 }
 
-#about{
-   right:450px;
+#about {
+    right: 450px;
 }
