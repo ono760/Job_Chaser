@@ -26,7 +26,7 @@ Users can search for jobs via Indeed.com's API, keep a personal list of jobs the
 
 | APIs Consumed   |
 | --------------- |
-| INDEED.COM      |
+| indeed.com      |
 
 ##Screenshots
 ###### Home Page (No login required)
