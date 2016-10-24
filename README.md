@@ -13,13 +13,12 @@ Users can search for jobs via Indeed.com's API, keep a personal list of jobs the
 | -------------------- |
 | JavaScript		  	|
 | CSS (Foundation)     |
-| HTML                 |
-| EJS					|
+| HTML5 & EJS                |
 | jQuery               |
 | Node.JS              |
-| EXPRESS              |
+| Express              |
 | PostgreSQL           |
-| Knex                 |
+| Knex.js                 |
 | Bcrypt			   |
 | Passport/LinkedIn OAuth2 |
  
